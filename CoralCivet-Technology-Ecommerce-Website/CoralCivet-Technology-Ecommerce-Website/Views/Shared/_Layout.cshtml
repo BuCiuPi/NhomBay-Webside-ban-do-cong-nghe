@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="small-navbar navbar-fixed-top">
+            <a class="">CoralCivet</a>
+            @*@Html.Partial("_LoginPartial")*@
+        </div>
+        <div class="nor-navbar">
+            <div class="logo">
+                <img src="" alt="logo.png" />
+            </div>
+            <nav>
+                <ul id="MenuItems">
+                    <li class="nav_Product"><a href=""><b>PRODUCT</b></a></li>
+
+                    <li class="nav_Brand"><a href=""><b>BRAND</b></a></li>
+
+                    <li class="nav_New"><a href=""><b>NEW</b></a></li>
+                </ul>
+            </nav>
+            <div>
+                <img src="#" alt="find-icon.png" />
+                <input type="text" />
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
