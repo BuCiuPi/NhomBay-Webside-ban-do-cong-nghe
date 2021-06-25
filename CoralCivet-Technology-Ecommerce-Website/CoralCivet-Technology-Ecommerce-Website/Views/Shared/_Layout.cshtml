@@ -9,26 +9,26 @@
 
 </head>
 <body>
-    <div class="container-fluid">
-        <div class="small-navbar navbar-fixed-top">
+    <div class="nav-container">
+        <div class="small-navbar">
             <a class="">CoralCivet</a>
             @*@Html.Partial("_LoginPartial")*@
         </div>
         <div class="nor-navbar">
             <div class="logo">
-                <img src="" alt="logo.png" />
+                <img src="~/Content/Image/logo.svg" alt="logo.svg" />
             </div>
             <nav>
                 <ul id="MenuItems">
-                    <li class="nav_Product"><a href=""><b>PRODUCT</b></a></li>
+                    <li class="dropdown"><a href=""><b>PRODUCT</b></a><span class="caret"></span></li>
 
-                    <li class="nav_Brand"><a href=""><b>BRAND</b></a></li>
+                    <li class="dropdown"><a href=""><b>BRAND</b></a><span class="caret"></span></li>
 
-                    <li class="nav_New"><a href=""><b>NEW</b></a></li>
+                    <li class="dropdown"><a href=""><b>NEW</b></a><span class="caret"></span></li>
                 </ul>
             </nav>
-            <div>
-                <img src="#" alt="find-icon.png" />
+            <div class="find">
+                <img src="~/Content/Image/find.svg" width="30" />
                 <input type="text" />
             </div>
         </div>
