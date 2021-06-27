@@ -11,8 +11,8 @@
 <body>
     <div class="nav-container">
         <div class="small-navbar">
-            <a class="">CoralCivet</a>
-            @*@Html.Partial("_LoginPartial")*@
+            <a class="" href="@Url.Action("index","Home")">CoralCivet</a>
+            @Html.Partial("_LoginPartial")
         </div>
         <div class="nor-navbar">
             <div class="logo">
@@ -36,7 +36,63 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col-1">
+                    <h3>
+                        Download Our App
+                    </h3>
+                    <p>
+                        Download App for Androind and IOS mobile phone.
+                    </p>
+
+                    <div class="app-logo">
+                        <img src="https://cdn.glitch.com/36a72c53-05c9-46a6-8c69-9703ced03b11%2Fplay-store.png?v=1623292340809">
+                        <img src="https://cdn.glitch.com/36a72c53-05c9-46a6-8c69-9703ced03b11%2Fapp-store.png?v=1623292339145">
+                    </div>
+
+                </div>
+
+                <div class="footer-col-2">
+                    <img src="~/Content/Image/logo.svg">
+                    <p>
+                        Our Purpose is To Sustainably Make the Pleasure and Benefit of Sports Accessible to the Many.
+                    </p>
+                </div>
+
+                <div class="footer-col-3">
+                    <h3>
+                        Usefull Links
+                    </h3>
+                    <ul>
+                        <li>Coupons</li>
+                        <li>Blog Post</li>
+                        <li>Return Policy</li>
+                        <li>Become Affiliate</li>
+                    </ul>
+
+                </div>
+
+                <div class="footer-col-4">
+                    <h3>
+                        Follow us
+                    </h3>
+                    <ul>
+                        <li>Facebook</li>
+                        <li>Twitter</li>
+                        <li>Instagram</li>
+                        <li>Youtube</li>
+                    </ul>
+
+                </div>
+
+            </div>
+            <hr>
+            <p style="text-align: center;">
+                copyright 2021 - LongNT Codes
+            </p>
+        </div>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>

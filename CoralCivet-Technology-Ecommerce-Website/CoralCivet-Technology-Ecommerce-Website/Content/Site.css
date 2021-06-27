@@ -22,17 +22,19 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*header css*/
 .nav-container {
     max-width: 1300px;
     margin: auto;
-    border: 1px solid red;
     background-color: white;
 }
 
 .small-navbar {
-    display:flex;
-    align-content:center;
+    display: flex;
+    align-content: center;
     background-color: #1a1a1a;
+    list-style-type: none;
 }
 
     .small-navbar a {
@@ -42,28 +44,35 @@ textarea {
         text-align: center;
         text-decoration: none;
         color: lightgrey;
+
     }
     .small-navbar a:hover{
         color: white;
     }
-.nor-navbar {
-    display: flex;
-    align-content: center;
-    align-items: center;
-    padding: 0px 10px;
+.small-navbar-account {
+    display:inline-block;
+    float: right;
+    
 }
+    .nor-navbar {
+        display: flex;
+        align-content: center;
+        align-items: center;
+        padding: 0px 10px;
+    }
     .nor-navbar .logo {
     }
-    .nor-navbar nav {
-        flex: 1;
-        text-align: left;
-    }
+        .nor-navbar nav {
+            flex: 1;
+            text-align: left;
+        }
         .nor-navbar nav ul {
             list-style-type: none;
             overflow: hidden;
             align-items: center;
             padding-top: 10px;
-            min-width: 220px
+            min-width: 220px;
+
         }
             .nor-navbar nav ul li {
                 display: inline-block;
@@ -72,7 +81,6 @@ textarea {
             }
                 .nor-navbar nav ul li a {
                     text-decoration: none;
-                    
                     color: black;
                     font-size: 30px;
                 }
@@ -100,6 +108,56 @@ textarea {
             color: #FA7268;
         }
         .logo img{
-    max-width: 75px;
-    width: 100%%;
+        max-width: 75px;
+        width: 100%;
+        }
+/*end header css*/
+
+/*footer css*/
+.footer-col-1,
+.footer-col-2,
+.footer-col-3,
+.footer-col-4 {
+    min-width: 250px;
+    margin-bottom: 20px;
 }
+
+.footer-col-2 {
+    flex: 1;
+    text-align: center;
+}
+
+    .footer-col-2 img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+.footer-col-3, .footer-col-4 {
+    flex-basis: 12%;
+    text-align: center;
+}
+
+    .footer-col-3 h3, .footer-col-4 h3 {
+        text-align: center;
+    }
+
+ul {
+    list-style-type: none;
+}
+
+.app-logo {
+    margin-top: 20px;
+}
+
+    .app-logo img {
+        width: 140px
+    }
+
+.footer hr {
+    background-color: #b5b5b5;
+    margin: 10px;
+}
+
+
+
+/*end footer css*/

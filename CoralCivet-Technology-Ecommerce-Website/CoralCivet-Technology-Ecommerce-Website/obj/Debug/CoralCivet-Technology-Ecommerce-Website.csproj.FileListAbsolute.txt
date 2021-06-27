@@ -1,3 +1,7 @@
+E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Net.Sockets.dll
+E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Reflection.Metadata.dll
+E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Text.Encoding.CodePages.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\CoralCivet-Technology-Ecommerce-Website.dll.config
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\CoralCivet-Technology-Ecommerce-Website.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\CoralCivet-Technology-Ecommerce-Website.pdb
@@ -31,14 +35,10 @@ E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\Cora
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.IO.FileSystem.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.IO.FileSystem.Primitives.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Net.Http.dll
-E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Net.Sockets.dll
-E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Reflection.Metadata.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Security.Cryptography.Algorithms.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Security.Cryptography.Primitives.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Text.Encoding.CodePages.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Threading.Tasks.Extensions.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.ValueTuple.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\roslyn\System.Xml.ReaderWriter.dll
@@ -101,8 +101,8 @@ E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\Cora
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\Microsoft.Owin.Security.OAuth.xml
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.csproj.AssemblyReference.cache
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.csproj.CoreCompileInputs.cache
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.csproj.CopyComplete
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.dll
 E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.pdb
+E:\NhomBay-Webside-ban-do-cong-nghe\CoralCivet-Technology-Ecommerce-Website\CoralCivet-Technology-Ecommerce-Website\obj\Debug\CoralCivet-Technology-Ecommerce-Website.csproj.AssemblyReference.cache
