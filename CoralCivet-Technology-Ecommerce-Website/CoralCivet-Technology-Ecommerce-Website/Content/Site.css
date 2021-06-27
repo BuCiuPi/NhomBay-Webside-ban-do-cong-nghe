@@ -1,6 +1,6 @@
 ﻿body {
+    padding-top: 50px;
     padding-bottom: 20px;
-    background-color: #dedede;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,23 +22,19 @@ select,
 textarea {
     max-width: 280px;
 }
-.nav-container {
-    max-width: 1300px;
-    margin: auto;
-    border: 1px solid red;
-    background-color: white;
-}
 
 .small-navbar {
-    display:flex;
+    flex:1;
     align-content:center;
     background-color: #1a1a1a;
 }
 
     .small-navbar a {
         float: left;
-        padding: 2px 10px;
-        font-size: 10px;
+        height: 30px;
+        padding: 5px;
+        font-size: 18px;
+        line-height: 20px;
         text-align: center;
         text-decoration: none;
         color: lightgrey;
@@ -48,58 +44,26 @@ textarea {
     }
 .nor-navbar {
     display: flex;
-    align-content: center;
     align-items: center;
-    padding: 0px 10px;
 }
-    .nor-navbar .logo {
+    .nor-navbar ul {
+        display: inline-block;
+        list-style-type: none;
+        overflow: hidden;
     }
-    .nor-navbar nav {
-        flex: 1;
-        text-align: left;
-    }
-        .nor-navbar nav ul {
-            list-style-type: none;
-            overflow: hidden;
-            align-items: center;
-            padding-top: 10px;
-            min-width: 220px
+        .nor-navbar ul li {
+            padding: 10px;
+            display: inline-block;
+            margin-right: 20px;
+            float: right;
+            
         }
-            .nor-navbar nav ul li {
-                display: inline-block;
-                padding: 5px;
-                float: left;
+            .nor-navbar ul li a{
+                text-decoration:none;
+                color: black;
+                font-size: 30px;
             }
-                .nor-navbar nav ul li a {
-                    text-decoration: none;
-                    
-                    color: black;
-                    font-size: 30px;
+
+                .nor-navbar ul li a:hover {
+                    color: #FA7268;
                 }
-
-                    .nor-navbar nav ul li a:hover {
-                        color: #FA7268;
-                    }
-.find {
-    display: flex;
-    float: right;
-}
-    .find img {
-        width: 30px;
-        padding: 3px;
-    }
-    .find input {
-        width: 100px;
-        margin-left: 5px;
-        padding: initial;
-        border: 2px solid black;
-    }
-
-        .find input:focus {
-            width: 200px;
-            color: #FA7268;
-        }
-        .logo img{
-    max-width: 75px;
-    width: 100%%;
-}
