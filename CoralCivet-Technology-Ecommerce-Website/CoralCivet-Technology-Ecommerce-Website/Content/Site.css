@@ -1,5 +1,4 @@
 ﻿body {
-    padding-bottom: 20px;
     background-color: #dedede;
 }
 
@@ -8,6 +7,7 @@
     padding-left: 15px;
     padding-right: 15px;
 }
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -23,12 +23,16 @@ textarea {
     max-width: 280px;
 }
 
+/*custom item*/
+
+
 /*header css*/
 
 .nav-container {
     max-width: 1300px;
     margin: auto;
     background-color: white;
+    border: 1px solid red;
 }
 
 .small-navbar {
@@ -122,31 +126,61 @@ textarea {
     justify-content: space-around;
 }
 
+.footer-container {
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 20px;
+    padding-top: 30px;
+    background-color: #6b6b6b;
+}
+
+    .footer-container h3{
+        color: white;
+    }
+    .footer-container p, .footer-container li{
+        color: #b5b5b5;
+    }
+        .footer-container li:hover {
+            color: lightgray;
+        }
+
+
 .footer-col-1,
 .footer-col-2,
 .footer-col-3,
 .footer-col-4 {
-    min-width: 250px;
+    min-width: 200px;
     margin-bottom: 20px;
 }
 
 .footer-col-2 {
     flex: 1;
     text-align: center;
+    padding: 15px;
 }
 
     .footer-col-2 img {
-        width: 100%;
+        width: 100px;
+        margin-top: 5px;
         margin-bottom: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: darkgray 0px -5px 0px;
     }
+        .footer-col-2 img:active {
+            margin-top: 0px;
+            margin-bottom: 25px;
+            box-shadow: darkgray 0px 0px 0px;
+        }
 
 .footer-col-3, .footer-col-4 {
-    flex-basis: 7%;
-    text-align: center;
+    flex-basis: 15%;
 }
 
     .footer-col-3 h3, .footer-col-4 h3 {
-        text-align: center;
+        color:white;
     }
 
 ul {
@@ -165,6 +199,16 @@ ul {
 .footer hr {
     background-color: #b5b5b5;
     margin: 30px;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.copyright a{
+    text-align: center;
+    text-decoration: none;
+    color: white;
 }
 
 
