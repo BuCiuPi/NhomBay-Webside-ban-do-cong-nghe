@@ -24,6 +24,7 @@ textarea {
 }
 
 /*header css*/
+
 .nav-container {
     max-width: 1300px;
     margin: auto;
@@ -114,6 +115,13 @@ textarea {
 /*end header css*/
 
 /*footer css*/
+.row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
 .footer-col-1,
 .footer-col-2,
 .footer-col-3,
@@ -133,7 +141,7 @@ textarea {
     }
 
 .footer-col-3, .footer-col-4 {
-    flex-basis: 12%;
+    flex-basis: 7%;
     text-align: center;
 }
 
@@ -155,7 +163,7 @@ ul {
 
 .footer hr {
     background-color: #b5b5b5;
-    margin: 10px;
+    margin: 30px;
 }
 
 
