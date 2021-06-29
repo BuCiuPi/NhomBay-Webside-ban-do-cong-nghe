@@ -36,8 +36,7 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-    <footer class="footer">
-        <div class="container">
+        <div class="nav-container">
             <div class="row">
                 <div class="footer-col-1">
                     <h3>
@@ -55,7 +54,7 @@
                 </div>
 
                 <div class="footer-col-2">
-                    <img src="~/Content/Image/logo.svg">
+                    <img src="~/Content/Image/logo.svg" width="50">
                     <p>
                         Our Purpose is To Sustainably Make the Pleasure and Benefit of Sports Accessible to the Many.
                     </p>
@@ -94,7 +93,6 @@
             </p>
         </div>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
