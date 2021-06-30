@@ -1,31 +1,106 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    <script src="~/Scripts/userIndex.js"></script>
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="slideshow-container">
+    <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <img src="~/Content/Image/slider1.png" style="width:100%">
+        <div class="text">Caption Text</div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <img src="~/Content/Image/slider2.png" style="width:100%">
+        <div class="text">Caption Text</div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <img src="~/Content/Image/slider3.png" style="width:100%">
+        <div class="text">Caption Text</div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div style="text-align:center">
+    <span class="dot" onmouseover="currentSlide(1)"></span>
+    <span class="dot" onmouseover="currentSlide(2)"></span>
+    <span class="dot" onmouseover="currentSlide(3)"></span>
+</div>
+<div class="index-categlory">
+    <h2 class="col-md-12 text-center"><b>CATEGLORYS</b></h2>
+    <span class="dot"></span>
+    <div class="row">
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="Keybroad.img" />
+            <h3>Keybroad</h3>
+        </div>
+
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="mouse.img" />
+            <h3>Mouse</h3>
+        </div>
+
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="clock.img" />
+            <h3>Clock</h3>
+        </div>
     </div>
 </div>
+
+<div class="index-bestSeller">
+    <h2 class="col-md-12 text-center"><b>BEST SELLER</b></h2>
+    <span class="dot"></span>
+    <div class="row">
+        <div class="col-md-3 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="Keybroad.img" />
+            <h3>keychron k3 v2</h3>
+        </div>
+
+        <div class="col-md-3 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="mouse.img" />
+            <h3>keychron k6</h3>
+        </div>
+
+        <div class="col-md-3 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="clock.img" />
+            <h3>logitech g503</h3>
+        </div>
+
+        <div class="col-md-3 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="clock.img" />
+            <h3>clock g7</h3>
+        </div>
+    </div>
+</div>
+
+<div class="index-news">
+    <h2 class="col-md-12 text-center"><b>NEWS</b></h2>
+    <span class="dot"></span>
+    <div class="row">
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="Keybroad.img" />
+            <h3>Keybroad</h3>
+        </div>
+
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="mouse.img" />
+            <h3>Mouse</h3>
+        </div>
+
+        <div class="col-md-4 index-item">
+            <img src="~/Content/Image/logo.svg" class="img-responsive center-block" alt="clock.img" />
+            <h3>Clock</h3>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/userIndex.js"></script>
