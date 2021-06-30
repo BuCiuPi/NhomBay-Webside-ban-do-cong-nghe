@@ -20,9 +20,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin
                 new { Controller = "Auth", action = "LoginAdmin", id = UrlParameter.Optional }
             );
             context.MapRoute(
-                "Admin_logout",
-                "Admin/logout",
-                new { Controller = "Auth", action = "Logout", id = UrlParameter.Optional }
+                "Admin_logoutAdmin",
+                "Admin/logoutAdmin",
+                new { Controller = "Auth", action = "LogoutAdmin", id = UrlParameter.Optional }
             );
 
             context.MapRoute(
