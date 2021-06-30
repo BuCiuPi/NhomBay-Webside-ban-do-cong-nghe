@@ -9,13 +9,13 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
     public class AuthController : Controller
     {
         // GET: Admin/Auth
-        public ActionResult login()
+        public ActionResult loginAdmin()
         {
             return View();
         }
 
 
-        public ActionResult logout()
+        public ActionResult logoutAdmin()
         {
             return View();
         }

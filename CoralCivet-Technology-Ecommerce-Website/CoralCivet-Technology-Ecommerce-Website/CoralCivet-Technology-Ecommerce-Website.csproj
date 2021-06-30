@@ -5348,7 +5348,7 @@
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Auth\login.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\loginAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Auth\logout.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

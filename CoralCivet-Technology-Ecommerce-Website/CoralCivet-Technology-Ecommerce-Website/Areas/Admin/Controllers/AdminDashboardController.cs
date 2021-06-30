@@ -13,7 +13,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         {
             if (Session["UserAdmin"].Equals(""))
             {
-                return Redirect("~/Admin/login");
+                return Redirect("~/Admin/loginAdmin");
             }
             return View();
         }
