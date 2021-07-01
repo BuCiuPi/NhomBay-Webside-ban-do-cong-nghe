@@ -5080,6 +5080,8 @@
     <Content Include="Content\Image\slider1.png" />
     <Content Include="Content\Image\slider2.png" />
     <Content Include="Content\Image\slider3.png" />
+    <Content Include="Content\Image\test1.png" />
+    <Content Include="Content\Image\test2.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

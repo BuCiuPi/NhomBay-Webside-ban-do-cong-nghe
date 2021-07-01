@@ -122,7 +122,7 @@ textarea {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: space-between; 
 }
 
 .footer-container {
@@ -188,7 +188,6 @@ ul {
 
 .app-logo {
     margin-top: 20px;
-    border: 1px solid red;
 }
 
     .app-logo img {
@@ -313,7 +312,85 @@ ul {
 
 .index-item {
     align-content: center;
+    border: 1px solid red;
 }
-.index-categlory {
-    text-align:center;
+.index-category {
+    max-width: 1300px;
+    text-align: center;
+}
+    .index-category .row h3 {
+        font-size: 30px;
+        padding: 8px 12px;
+        bottom: 8px;
+        width: 100%;
+    }
+
+
+.col-1 {
+    flex-basis: 100%;
+    padding: 5px;
+    min-width: 500px;
+}
+
+.col-2 {
+    flex-basis: 50%;
+    padding: 5px;
+    min-width: 300px;
+}
+
+.col-3 {
+    flex-basis: 30%;
+    padding: 10px;
+    min-width: 160px;
+    border-radius: 2px;
+    transition: 0.5s;
+    background-color: white;
+}
+
+    .col-3 img {
+        max-width: 100%;
+        border-radius: 2px;
+    }
+
+
+
+    .col-3:hover {
+        transform: translateY(-15px) scale(1.1, 1.1);
+        box-shadow: 0px 6px 20px grey;
+    }
+
+.col-4 {
+    flex-basis: 22%;
+    padding: 10px;
+    min-width: 160px;
+    background-color: white;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+    .col-4 img {
+        max-width: 100%;
+        border-radius: 2px;
+    }
+
+    .col-3 h2 {
+        margin: 0;
+        text-align: center;
+    }
+
+    .col-3 p {
+        text-align: center;
+        margin: 0;
+        color: gray;
+    }
+
+    .col-3 hr {
+        border: 3px dashed gray;
+        height: 0px;
+    }
+
+.col-80 {
+    flex-basis: 80%;
+    min-width: 500px;
+    justify-content: center;
 }
