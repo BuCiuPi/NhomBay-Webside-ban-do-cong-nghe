@@ -6,11 +6,15 @@ using System.Web.Mvc;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
-    public class AdminIndexController : Controller
+    public class AdminDashboardController : Controller
     {
-        // GET: Admin/AdminIndex
+        // GET: Admin/AdminDashboard
         public ActionResult Index()
         {
+            if (Session["UserAdmin"].Equals(""))
+            {
+                return Redirect("~/Admin/loginAdmin");
+            }
             return View();
         }
     }

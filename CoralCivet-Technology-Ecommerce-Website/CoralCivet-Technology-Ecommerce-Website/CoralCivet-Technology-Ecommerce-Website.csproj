@@ -168,13 +168,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminIndexController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminDashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AuthController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Library\MyString.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -5088,9 +5090,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Shared\_aminLayout.cshtml" />
-    <Content Include="Areas\Admin\Views\AdminIndex\Index.cshtml" />
     <Content Include="Content\admin\css\style.css.map" />
     <Content Include="Content\admin\icons\cryptocoins\fonts\cryptocoins.ttf" />
     <Content Include="Content\admin\icons\cryptocoins\fonts\cryptocoins.woff" />
@@ -5354,6 +5353,11 @@
     <Content Include="Content\admin\plugins\typeahedjs\dist\nba.json" />
     <Content Include="Content\admin\plugins\typeahedjs\dist\nfl.json" />
     <Content Include="Content\admin\plugins\typeahedjs\dist\nhl.json" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminDashboard\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\loginAdmin.cshtml" />
+    <Content Include="Areas\Admin\Views\Auth\logoutAdmin.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

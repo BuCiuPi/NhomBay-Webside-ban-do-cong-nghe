@@ -17,5 +17,11 @@ namespace CoralCivet_Technology_Ecommerce_Website
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start()
+        {
+            Session["UserAdmin"] = "";
+            Session["UserId"] = "";
+        }
     }
 }

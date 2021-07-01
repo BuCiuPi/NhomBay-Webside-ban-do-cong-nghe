@@ -15,9 +15,20 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
+                "Admin_loginAdmin",
+                "Admin/loginAdmin",
+                new { Controller = "Auth", action = "LoginAdmin", id = UrlParameter.Optional }
+            );
+            context.MapRoute(
+                "Admin_logoutAdmin",
+                "Admin/logoutAdmin",
+                new { Controller = "Auth", action = "LogoutAdmin", id = UrlParameter.Optional }
+            );
+
+            context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new {Controller ="Dashboard", action = "Index", id = UrlParameter.Optional }
             );
         }
     }
