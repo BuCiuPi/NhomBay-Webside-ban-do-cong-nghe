@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row align-flex-start">
+    <div class="col-25 border-debug filter-list">
+        <ul>@for(int i =0;i< 10; i++) {
+            <li><a>product @i</a></li>
+        }
+            
+        </ul>
+    </div>
+
+    <div class="col-70 border-debug">
+        <div class="col-1 slideshow-container">
+            <div class="mySlides">
+                <div class="numbertext">1 / 3</div>
+                <img src="~/Content/Image/slider1.png" style="width:100%">
+                <div class="text">Caption Text</div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">1 / 3</div>
+                <img src="~/Content/Image/slider2.png" style="width:100%">
+                <div class="text">Caption Text</div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+
+            <div class="mySlides">
+                <div class="numbertext">1 / 3</div>
+                <img src="~/Content/Image/slider3.png" style="width:100%">
+                <div class="text">Caption Text</div>
+                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            </div>
+        </div>
+
+        <div style="text-align:center">
+            <span class="dot" onmouseover="currentSlide(1)"></span>
+            <span class="dot" onmouseover="currentSlide(2)"></span>
+            <span class="dot" onmouseover="currentSlide(3)"></span>
+        </div>
+
+        <div class="row pd-25">
+            <div class="col-3 index-item product">
+                <img src="~/Content/Image/test2.png" class="img-responsive center-block" alt="clock.img" />
+                <a href=""><b>keychron k3 v2</b></a>
+                <p class="product-color">black</p>
+                <hr />
+                <h3><b>200.000 VND</b></h3>
+            </div>
+
+            <div class="col-3 index-item product">
+                <img src="~/Content/Image/test2.png" class="img-responsive center-block" alt="clock.img" />
+                <a href=""><b>keychron k3 v2</b></a>
+                <p class="product-color">black</p>
+                <hr />
+                <h3><b>200.000 VND</b></h3>
+            </div>
+
+            <div class="col-3 index-item product">
+                <img src="~/Content/Image/test2.png" class="img-responsive center-block" alt="clock.img" />
+                <a href=""><b>keychron k3 v2</b></a>
+                <p class="product-color">black</p>
+                <hr />
+                <h3><b>200.000 VND</b></h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/userIndex.js"></script>
+
+
