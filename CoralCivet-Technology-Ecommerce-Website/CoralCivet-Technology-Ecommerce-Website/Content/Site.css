@@ -1,5 +1,5 @@
 ﻿body {
-    background-color: #dedede;
+    background-color: #eaeaea;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -31,7 +31,7 @@ textarea {
     max-width: 1300px;
     margin: auto;
     background-color: white;
-    border: 1px solid red;
+    border-radius: 0px 0px 10px 10px;
 }
 
 .small-navbar {
@@ -238,15 +238,15 @@ ul {
 .mySlides {
     display: none;
 }
-.mySlides img{
-    max-height: 400px;
-}
+    .mySlides img{
+        max-height: 400px;
+    }
 /* Next & previous buttons */
 .prev, .next {
-    cursor: pointer;
     position: absolute;
     height: 400px;
-    max-height: 400px;
+    max-height: 100%;
+    max-width: 100%;
     width: auto;
     padding: 16px;
     color: rgb(0 0 0 / 0.8);
@@ -254,7 +254,6 @@ ul {
     font-size: 18px;
     transition: 0.6s ease;
     user-select: none;
-    border: 1px solid red;
     align-items: center;
     background-color: rgb(255 255 255 / 0.4);
 }
@@ -345,8 +344,9 @@ ul {
 .col-3 {
     flex-basis: 32%;
     min-width: 160px;
+    padding: 10px;
     border-radius: 2px 2px 10px 10px;
-    transition: 0.5s;
+    transition: 0.3s;
 }
 
     .col-3 img {
@@ -358,17 +358,19 @@ ul {
 
     .col-3:hover {
         transform: translateY(-10px) scale(1.02, 1.02);
-        box-shadow: 0px 6px 20px grey;
     }
 
 .col-4 {
     flex-basis: 22%;
     padding: 10px;
     min-width: 160px;
-    background-color: white;
     justify-content: center;
     border-radius: 2px;
+    transition: 0.3s;
 }
+    .col-4:hover {
+        transform: translateY(-5px) scale(1.005, 1.0005);
+    }
 
     .col-4 img {
         max-width: 100%;
@@ -399,6 +401,20 @@ ul {
         height: 0px;
     }
 
+
+    .col-4:hover hr {
+        border-block-color: #FA7268;
+    }
+
+
+
+/*end index*/
+/*-----------------------------------------------------------------------*/
+.col-20 {
+    flex-basis: 20%;
+    min-width: 500px;
+    justify-content: center;
+}
 .col-80 {
     flex-basis: 80%;
     min-width: 500px;
