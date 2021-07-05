@@ -332,11 +332,14 @@ ul {
 .col-1 {
     flex-basis: 100%;
     padding: 5px;
+
 }
 
 .col-2 {
     flex-basis: 50%;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 2px;
+    transition: 0.3s;
 }
 
 .col-3 {
@@ -367,10 +370,6 @@ ul {
     border-radius: 2px;
     transition: 0.3s;
 }
-    .col-4:hover {
-        transform: translateY(-5px) scale(1.005, 1.0005);
-    }
-
 .col-5 {
     flex-basis: 20%;
     padding: 25px;
@@ -411,6 +410,9 @@ ul {
         height: 0px;
     }
 
+    .product:hover {
+        transform: translateY(-5px) scale(1.005, 1.0005);
+    }
 
 .product:hover hr {
     border-block-color: #FA7268;
@@ -422,11 +424,29 @@ ul {
     border-radius: 5px;
 }
 
+.cart-product img{
+    width: 100%;
+}
 
+.cart-product-item {
+    align-items: stretch;
+}
+
+.cart-title {
+    background-color: white;
+}
+.cart-title p{
+    margin: 10px;
+    font-size: 20px;
+}
+.cart-order {
+    background-color: white;
+    border-radius: 5px;
+    padding: 20px;
+}
 
 /*end body*/
 /*-----------------------------------------------------------------------*/
-
 .col-25 {
     flex-basis: 25%;
     min-width: 100px;
