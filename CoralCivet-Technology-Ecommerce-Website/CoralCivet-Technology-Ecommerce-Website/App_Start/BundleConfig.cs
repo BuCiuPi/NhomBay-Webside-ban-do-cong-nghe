@@ -24,7 +24,7 @@ namespace CoralCivet_Technology_Ecommerce_Website
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/Site.css"));
+                      "~/Content/site.css"));
         }
     }
 }

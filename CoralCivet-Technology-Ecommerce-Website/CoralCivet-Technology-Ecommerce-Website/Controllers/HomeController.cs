@@ -26,5 +26,13 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
 
             return View();
         }
+
+        public ActionResult UnderConstruction()
+        {
+
+            return View();
+        }
+
+
     }
 }
