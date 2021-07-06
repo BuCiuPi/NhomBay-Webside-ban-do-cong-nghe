@@ -151,7 +151,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, Name =model.Name, Gender =Convert.ToInt32( model.Gender),Address = model.Address,Update_at = DateTime.Now, Create_at = DateTime.Now };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
