@@ -5410,6 +5410,7 @@
     <Content Include="Views\Home\UnderConstruction.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
+    <Content Include="Views\Shared\_ProductPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
