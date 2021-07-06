@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -10,6 +11,13 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public int Gender { get; set; }
+        public string Address { get; set; }
+        public DateTime Create_at { get; set; }
+        public string Create_by { get; set; }
+        public DateTime Update_at { get; set; }
+        public string Update_by { get; set; }
+        public int Status { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
