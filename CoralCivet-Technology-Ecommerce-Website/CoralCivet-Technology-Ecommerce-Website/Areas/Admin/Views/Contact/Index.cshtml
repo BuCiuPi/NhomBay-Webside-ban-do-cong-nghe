@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý liên hệ";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>@ViewBag.Title</h4>
+                <ol class="breadcrumb breadcrumb-title breadcrumb-arrow text-dark">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="basic-table.html">@ViewBag.Title</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-3">
+                <b>Từ khóa</b>
+                <input class="form-control" type="search" value="" id="" placeholder="Mã liên hệ, tên liên hệ, loại liên hệ,...">
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày bắt đầu</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày kết thúc</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Sắp xếp</b>
+                <select class="form-control">
+                    <option value="">Mặc định mới nhất</option>
+                    <option>Cũ nhất</option>
+                    <option>Theo tên</option>
+                </select>
+            </div>
+            <div class="col-lg-12">
+                Hiện tại có <b>10</b> liên hệ
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-success waves-effect waves-light">
+                    <i class="fas fa-print">&nbsp;</i> IN
+                </button>
+                <button type="button" class="btn btn-outline-danger waves-effect waves-light">
+                    <i class="fas fa-trash">&nbsp;</i> THÙNG RÁC
+                </button>
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>HỌ TÊN KHÁCH</th>
+                            <th>NỘI DUNG</th>
+                            <th>EMAIL</th>
+                            <th>SỐ ĐIỆN THOẠI</th>
+                            <th>NGÀY CẬP NHẬT</th>
+                            <th>TÙY CHỌN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 1; i < 10; i++)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>Nguyễn Văn A</td>
+                                <td>Bàn phím bao nhiêu tiền một cái vậy shop</td>
+                                <td>nva@gmail.com</td>
+                                <td>0123456789</td>
+                                <td>09/07/2021</td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#deleteContact"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-success">1</button>
+                        <button type="button" class="btn btn-success">2</button>
+                        <button type="button" class="btn btn-success">3</button>
+                        <button type="button" class="btn btn-success">4</button>
+                    </div>
+                </div>
+            </div>
+            <!--Xóa liên hệ-->
+            <div class="modal fade" id="deleteContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xóa liên hệ - Bàn phím đẹp và chất lượng</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có chắc muốn xóa liên hệ này??
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

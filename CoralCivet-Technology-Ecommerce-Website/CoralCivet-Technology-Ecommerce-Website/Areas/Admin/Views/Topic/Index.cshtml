@@ -1,0 +1,241 @@
+﻿
+@{
+    ViewBag.Title = "Quản lý chủ đề";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<br />
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>@ViewBag.Title</h4>
+                <ol class="breadcrumb breadcrumb-title breadcrumb-arrow text-dark">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="basic-table.html">@ViewBag.Title</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-3">
+                <b>Từ khóa</b>
+                <input class="form-control" type="search" value="" id="" placeholder="Mã chủ đề, tên chủ đề, loại chủ đề,...">
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày bắt đầu</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày kết thúc</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Sắp xếp</b>
+                <select class="form-control">
+                    <option value="">Mặc định mới nhất</option>
+                    <option>Cũ nhất</option>
+                    <option>Theo tên</option>
+                </select>
+            </div>
+            <div class="col-lg-12">
+                Hiện tại có <b>10</b> chủ đề
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addTopic">
+                    <i class="fas fa-plus-circle">&nbsp;</i> THÊM CHỦ ĐỀ
+                </button>
+                <button type="button" class="btn btn-outline-danger waves-effect waves-light">
+                    <i class="fas fa-trash">&nbsp;</i> THÙNG RÁC
+                </button>
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ẢNH CHỦ ĐỀ</th>
+                            <th>MÃ CHỦ ĐỀ</th>
+                            <th>TÊN CHỦ ĐỀ</th>
+                            <th>TÌNH TRẠNG</th>
+                            <th>NGÀY CẬP NHẬT</th>
+                            <th>TÙY CHỌN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (var i = 1; i < 10; i++)
+                        {
+                            <tr>
+                                <td>@i</td>
+                                <td>
+                                    <img src="~/Images/Topic/ban-phim-laptop-bi-loi.jpg" style="width: 100px; height: 100px" />
+                                </td>
+                                <td>CD-122</td>
+                                <td>Máy tính</td>
+                                <td>
+                                    <div class="label-main">
+                                        <label class="label bg-success">Đang hoạt động</label>
+                                    </div>
+                                </td>
+                                <td>09/07/2021</td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#editTopic"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
+                                    <a data-toggle="modal" data-target="#deleteTopic"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
+                    <div class="btn-group mr-2" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-success">1</button>
+                        <button type="button" class="btn btn-success">2</button>
+                        <button type="button" class="btn btn-success">3</button>
+                        <button type="button" class="btn btn-success">4</button>
+                    </div>
+                </div>
+            </div>
+            <!--Thêm chủ đề-->
+            <div class="modal fade" id="addTopic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1060px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm chủ đề</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="form-control-label">Hình ảnh</label>
+                                <input type="file" class="form-control" name="Image">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Mã chủ đề</label>
+                                <input type="text" class="form-control" name="Code" placeholder="Vui lòng nhập mã chủ đề">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Tên chủ đề</label>
+                                <input type="text" class="form-control" name="Name" placeholder="Vui lòng nhập tên chủ đề">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Mô tả</label>
+                                <textarea class="form-control" name="Describe" rows="4"></textarea>
+                            </div>
+                            <fieldset class="form-group">
+                                <label class="form-control-label">Tình trạng</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
+                                        Hoạt động
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Active" value="false">
+                                        Không hoạt động
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Sửa chủ đề-->
+            <div class="modal fade" id="editTopic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1060px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Sửa chủ đề - Máy tính</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="form-control-label">Hình ảnh</label>
+                                <input type="file" class="form-control" name="Image">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Mã chủ đề</label>
+                                <input type="text" class="form-control" name="Code" value="CD-122" placeholder="Vui lòng nhập mã chủ đề">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Tên chủ đề</label>
+                                <input type="text" value="Máy tính" class="form-control" name="Name" placeholder="Vui lòng nhập tên chủ đề">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Mô tả</label>
+                                <textarea class="form-control" name="Describe" rows="4">Để các bài viết máy tính</textarea>
+                            </div>
+                            <fieldset class="form-group">
+                                <label class="form-control-label">Tình trạng</label>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
+                                        Hoạt động
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input type="radio" class="form-check-input" name="Active" value="false">
+                                        Không hoạt động
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Xóa chủ đề-->
+            <div class="modal fade" id="deleteTopic" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Xóa chủ đề - Máy tính</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Bạn có chắc muốn xóa chủ đề này??
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
