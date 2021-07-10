@@ -1,4 +1,5 @@
-﻿@{
+﻿
+@{
     ViewBag.Title = "Home Page";
     <script src="~/Scripts/userIndex.js"></script>
 }
@@ -38,20 +39,13 @@
 <div class="index-category">
     <h1 class="col-1"><b>CATEGORIES</b></h1>
     <div class="row">
-        <div class="col-3 index-item">
-            <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="Keybroad.img" />
-            <h3><b>KEYBROAD</b></h3>
-        </div>
-
-        <div class="col-3 index-item">
-            <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="mouse.img" />
-            <h3><b>MOUSE</b></h3>
-        </div>
-
-        <div class="col-3 index-item">
-            <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="clock.img" />
-            <h3><b>ACCESSORIES</b></h3>
-        </div>
+        @foreach (var item in ViewBag.Types)
+        {
+            <div class="col-3 index-item">
+                <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="Keybroad.img" />
+                <h3><b>@item.name</b></h3>
+            </div>
+        }
     </div>
     <br />
     <br />
@@ -62,10 +56,10 @@
 <div class="index-bestSeller">
     <h1 class="col-5 text-center"><b>BEST SELLER</b></h1>
     <div class="row">
-        @for (int i = 0; i < 4; i++)
+        @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in ViewBag.Products)
         {
             <div class="col-4 index-item">
-                @Html.Partial("_ProductPartial")
+                @Html.Partial("_ProductPartial",item)
             </div>
         }
     </div>

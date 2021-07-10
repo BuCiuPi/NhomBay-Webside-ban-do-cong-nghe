@@ -49,6 +49,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -179,6 +181,19 @@
     </Compile>
     <Compile Include="Library\MyString.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CoralCivet\Brand.cs" />
+    <Compile Include="Models\CoralCivet\contact.cs" />
+    <Compile Include="Models\CoralCivet\CoralCivetContext.cs" />
+    <Compile Include="Models\CoralCivet\menu.cs" />
+    <Compile Include="Models\CoralCivet\order.cs" />
+    <Compile Include="Models\CoralCivet\ordersdetail.cs" />
+    <Compile Include="Models\CoralCivet\post.cs" />
+    <Compile Include="Models\CoralCivet\Product.cs" />
+    <Compile Include="Models\CoralCivet\ProductImg.cs" />
+    <Compile Include="Models\CoralCivet\slider.cs" />
+    <Compile Include="Models\CoralCivet\topic.cs" />
+    <Compile Include="Models\CoralCivet\Type.cs" />
+    <Compile Include="Models\CoralCivet\TypeDetail.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
