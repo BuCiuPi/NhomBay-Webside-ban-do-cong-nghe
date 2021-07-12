@@ -10,9 +10,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
 {
     public class HomeController : Controller
     {
+        CoralCivetContext context = new CoralCivetContext();
         public ActionResult Index()
         {
-            CoralCivetContext context = new CoralCivetContext();
             ViewBag.Types = context.Types.Where(p => p.parentid == null).ToList();
             ViewBag.Products = context.Products.ToList().Take(4);
             return View();
