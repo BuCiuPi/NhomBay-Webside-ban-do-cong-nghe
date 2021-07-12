@@ -1,40 +1,13 @@
-﻿
+﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.slider>
 @{
     ViewBag.Title = "Home Page";
     <script src="~/Scripts/userIndex.js"></script>
 }
+<div>
 
-<div class="slideshow-container">
-    <div class="mySlides">
-        <div class="numbertext">1 / 3</div>
-        <img src="~/Content/Image/slider1.png" style="width:100%">
-        <div class="text">Caption Text</div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">1 / 3</div>
-        <img src="~/Content/Image/slider2.png" style="width:100%">
-        <div class="text">Caption Text</div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
-
-    <div class="mySlides">
-        <div class="numbertext">1 / 3</div>
-        <img src="~/Content/Image/slider3.png" style="width:100%">
-        <div class="text">Caption Text</div>
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
-    </div>
+    @Html.Partial("_SliderPartial",Model)
 </div>
 
-<div style="text-align:center">
-    <span class="dot" onmouseover="currentSlide(1)"></span>
-    <span class="dot" onmouseover="currentSlide(2)"></span>
-    <span class="dot" onmouseover="currentSlide(3)"></span>
-</div>
 
 <div class="index-category">
     <h1 class="col-1"><b>CATEGORIES</b></h1>
@@ -59,7 +32,7 @@
         @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in ViewBag.Products)
         {
             <div class="col-4 index-item">
-                @Html.Partial("_ProductPartial",item)
+                @Html.Partial("_ProductPartial", item)
             </div>
         }
     </div>
