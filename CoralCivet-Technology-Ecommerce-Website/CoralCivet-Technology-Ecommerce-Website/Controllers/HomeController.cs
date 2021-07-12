@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CoralCivet_Technology_Ecommerce_Website.Models;
+using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +10,11 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
 {
     public class HomeController : Controller
     {
+        CoralCivetContext context = new CoralCivetContext();
         public ActionResult Index()
         {
+            ViewBag.Types = context.Types.Where(p => p.parentid == null).ToList();
+            ViewBag.Products = context.Products.ToList().Take(4);
             return View();
         }
 
