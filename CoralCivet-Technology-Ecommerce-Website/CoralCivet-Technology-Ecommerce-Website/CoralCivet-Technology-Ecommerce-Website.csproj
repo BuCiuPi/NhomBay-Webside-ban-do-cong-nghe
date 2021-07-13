@@ -5608,6 +5608,7 @@
     <Content Include="Views\Home\Cart.cshtml" />
     <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
+    <Content Include="Views\Shared\_SliderPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

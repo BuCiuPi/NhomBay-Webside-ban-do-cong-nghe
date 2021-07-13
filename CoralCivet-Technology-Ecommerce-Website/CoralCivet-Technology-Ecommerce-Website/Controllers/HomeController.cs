@@ -13,9 +13,10 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
         CoralCivetContext context = new CoralCivetContext();
         public ActionResult Index()
         {
+
             ViewBag.Types = context.Types.Where(p => p.parentid == null).ToList();
             ViewBag.Products = context.Products.ToList().Take(4);
-            return View();
+            return View(context.sliders.Where(p => p.status == 1).ToList());
         }
 
         public ActionResult About()
