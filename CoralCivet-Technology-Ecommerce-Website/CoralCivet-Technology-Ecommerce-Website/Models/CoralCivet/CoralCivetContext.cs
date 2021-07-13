@@ -13,6 +13,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
         }
 
         public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<contact> contacts { get; set; }
         public virtual DbSet<menu> menus { get; set; }
         public virtual DbSet<order> orders { get; set; }
@@ -42,7 +43,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             modelBuilder.Entity<menu>()
                 .HasMany(e => e.menu1)
                 .WithRequired(e => e.menu2)
-                .HasForeignKey(e => e.parentid);
+                .HasForeignKey(e => e.parentId);
 
             modelBuilder.Entity<order>()
                 .HasMany(e => e.ordersdetails)
@@ -60,6 +61,11 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             modelBuilder.Entity<post>()
                 .Property(e => e.type)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.Carts)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.ordersdetails)
@@ -91,7 +97,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             modelBuilder.Entity<topic>()
                 .HasMany(e => e.posts)
                 .WithOptional(e => e.topic)
-                .HasForeignKey(e => e.topid);
+                .HasForeignKey(e => e.topId);
 
             modelBuilder.Entity<Type>()
                 .HasMany(e => e.Products)
@@ -101,7 +107,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             modelBuilder.Entity<Type>()
                 .HasMany(e => e.Type1)
                 .WithOptional(e => e.Type2)
-                .HasForeignKey(e => e.parentid);
+                .HasForeignKey(e => e.parentId);
 
             modelBuilder.Entity<Type>()
                 .HasMany(e => e.TypeDetails)

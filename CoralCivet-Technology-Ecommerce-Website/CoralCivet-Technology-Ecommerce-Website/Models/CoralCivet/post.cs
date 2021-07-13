@@ -9,9 +9,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     [Table("post")]
     public partial class post
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public int? topid { get; set; }
+        public int? topId { get; set; }
 
         [Required]
         public string title { get; set; }

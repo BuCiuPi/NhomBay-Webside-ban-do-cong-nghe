@@ -17,13 +17,13 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             TypeDetails = new HashSet<TypeDetail>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string name { get; set; }
 
         public string slug { get; set; }
 
-        public int? parentid { get; set; }
+        public int? parentId { get; set; }
 
         public int orders { get; set; }
 

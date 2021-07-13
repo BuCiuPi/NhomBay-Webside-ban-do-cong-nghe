@@ -14,7 +14,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             Products = new HashSet<Product>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string name { get; set; }
 

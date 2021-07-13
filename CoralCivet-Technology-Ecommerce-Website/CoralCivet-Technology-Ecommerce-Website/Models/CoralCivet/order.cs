@@ -15,12 +15,12 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             ordersdetails = new HashSet<ordersdetail>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         public string code { get; set; }
 
         [StringLength(128)]
-        public string userid { get; set; }
+        public string userId { get; set; }
 
         public DateTime created_at { get; set; }
 
