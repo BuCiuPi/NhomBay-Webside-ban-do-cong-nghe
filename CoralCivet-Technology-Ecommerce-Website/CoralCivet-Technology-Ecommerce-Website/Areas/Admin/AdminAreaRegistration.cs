@@ -28,7 +28,8 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin
             context.MapRoute(
                 "Admin_default",
                 "Admin/{controller}/{action}/{id}",
-                new {Controller ="Dashboard", action = "Index", id = UrlParameter.Optional }
+                new {Controller ="Dashboard", action = "Index", id = UrlParameter.Optional }, 
+                new[] { "CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers" }
             );
         }
     }
