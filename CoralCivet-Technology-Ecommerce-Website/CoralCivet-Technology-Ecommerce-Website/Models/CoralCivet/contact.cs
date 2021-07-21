@@ -9,7 +9,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     [Table("contact")]
     public partial class contact
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [StringLength(100)]
         public string fullname { get; set; }

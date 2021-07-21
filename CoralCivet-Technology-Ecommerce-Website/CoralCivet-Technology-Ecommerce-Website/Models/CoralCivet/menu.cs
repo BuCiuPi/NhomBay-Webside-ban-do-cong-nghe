@@ -23,9 +23,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
         public string link { get; set; }
 
-        public int? tableid { get; set; }
+        public int? tableId { get; set; }
 
-        public int parentid { get; set; }
+        public int parentId { get; set; }
 
         public int orders { get; set; }
 

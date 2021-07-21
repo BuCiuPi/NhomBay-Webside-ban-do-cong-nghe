@@ -9,9 +9,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     [Table("ordersdetail")]
     public partial class ordersdetail
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
 
-        public int orderid { get; set; }
+        public int orderId { get; set; }
 
         public int productid { get; set; }
 

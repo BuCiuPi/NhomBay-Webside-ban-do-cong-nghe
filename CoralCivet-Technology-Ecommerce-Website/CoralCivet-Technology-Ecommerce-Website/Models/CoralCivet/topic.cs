@@ -15,7 +15,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             posts = new HashSet<post>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(255)]
@@ -25,7 +25,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
         [StringLength(255)]
         public string slug { get; set; }
 
-        public int parentid { get; set; }
+        public int parentId { get; set; }
 
         public int orders { get; set; }
 

@@ -12,6 +12,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            Carts = new HashSet<Cart>();
             ordersdetails = new HashSet<ordersdetail>();
             ProductImgs = new HashSet<ProductImg>();
             TypeDetails = new HashSet<TypeDetail>();
@@ -19,7 +20,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
         public int ID { get; set; }
 
-        public int? catid { get; set; }
+        public int? catId { get; set; }
 
         [Required]
         public string name { get; set; }
@@ -52,6 +53,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
         public int? brandId { get; set; }
 
         public virtual Brand Brand { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ordersdetail> ordersdetails { get; set; }
