@@ -27,10 +27,14 @@ textarea {
 /*header css*/
 
 .nav-container {
-    max-width: 1300px;
     margin: auto;
     background-color: white;
     border-radius: 0px 0px 10px 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
 }
 
 .small-navbar {
@@ -297,7 +301,7 @@ ul {
     max-width: 1300px;
     position: relative;
     margin: 20px;
-    max-height: 400px;
+    
 }
 
 /* Hide the images by default */
@@ -305,7 +309,7 @@ ul {
     display: none;
 }
     .mySlides img{
-        max-height: 400px;
+        
     }
 /* Next & previous buttons */
 .prev, .next {
@@ -570,6 +574,8 @@ ul {
 }
 
 /*end body*/
+
+
 /*-----------------------------------------------------------------------*/
 .col-25 {
     flex-basis: 25%;
@@ -663,7 +669,36 @@ input:checked + .slider:before {
         border-radius: 50%;
     }
 
+/*product detail*/
+
+.product-detail-button {
+    text-align: center;
+    justify-content: space-between;
+}
+
+    .product-detail-button div {
+        align-content: center;
+        background-color: #FA7268;
+        margin: 0px auto 10px auto;
+    }
+
+        .product-detail-button div:hover {
+            background-color: #d9445f;
+        }
+
+    .product-detail-button a {
+        color: white;
+        margin: 10px 10px;
+        display: block;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/*    EndProduct details*/
+
 /*---------------------------------------------------------*/
+
+
 /*custom item*/
 .border-debug {
     border: 1px solid red;
@@ -674,5 +709,24 @@ input:checked + .slider:before {
 }
 
 .align-flex-start {
-     align-items: flex-start;
+    align-items: flex-start;
 }
+.body-margin {
+    margin-top: 50px;
+}
+
+.floating-cart {
+    position: fixed;
+    right: 0;
+    top: 20%;
+    background-color: coral;
+    padding: 10px;
+    z-index: 10;
+    border-radius: 10px 0px 10px 5px;
+}
+.floating-cart img{
+    width: 20px;
+}
+
+/*---------------------------------------------------------------*/
+

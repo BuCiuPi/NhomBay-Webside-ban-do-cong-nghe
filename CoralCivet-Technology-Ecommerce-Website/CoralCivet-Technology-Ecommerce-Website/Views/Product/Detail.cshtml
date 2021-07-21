@@ -6,15 +6,15 @@
 
 <hr />
 <div class="row align-flex-start">
-    <div class="col-55 border-debug">
+    <div class="col-55 ">
         <div class="row ">
             <img src="~/Content/Image/test2.png" alt="product.img" />
         </div>
     </div>
 
-    <div class="col-40 product-detail border-debug ">
+    <div class="col-40 product-detail ">
         <div class="row">
-            <h2 class="col-1 border-debug">
+            <h2 class="col-1 ">
                 @ViewBag.ProductDetail.Brand.name @ViewBag.ProductDetail.name
                 <br />
             </h2>
@@ -22,7 +22,7 @@
             <div class="col-2">
                 <p>ID: <b>@ViewBag.ProductDetail.ID</b></p>
             </div>
-            <div class="col-2 border-debug">
+            <div class="col-2 ">
                 <p>Status: @if (@ViewBag.ProductDetail.status == 0)
                 {
                    <b>Stop selling</b>
@@ -45,12 +45,21 @@
                 <hr />
             </div>
             
-            <div class="col-1">
+            <div class="col-1 ">
                 <h2>Qty</h2>
-                <a>Add to cart</a>
-                <a>Like</a>
-                <br />
-                <a>BUY NOW</a>
+                <div class="row product-detail-button">
+                    <div class="col-70 border-debug " style="min-width:auto">
+                        <a>Add to cart</a>
+                    </div>
+
+                    <div class="col-25 border-debug " style="min-width:auto">
+                        <a>Like</a>
+                    </div>
+                        
+                    <div class="col-1 border-debug ">
+                        <a>BUY NOW</a>
+                    </div>
+                </div>
                 <hr />
             </div>
 

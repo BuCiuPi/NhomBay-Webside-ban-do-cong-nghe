@@ -6117,6 +6117,26 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\find.svg" />
+    <Content Include="Content\Image\KeychronK2_1.jpg" />
+    <Content Include="Content\Image\KeychronK2_2.jpg" />
+    <Content Include="Content\Image\KeychronK2_3.jpg" />
+    <Content Include="Content\Image\KeychronK4_1.jpg" />
+    <Content Include="Content\Image\KeychronK4_2.jpg" />
+    <Content Include="Content\Image\KeychronK4_3.jpg" />
+    <Content Include="Content\Image\KeychronK6_1.jpg" />
+    <Content Include="Content\Image\KeychronK6_2.jpg" />
+    <Content Include="Content\Image\KeychronK6_3.jpg" />
+    <Content Include="Content\Image\KeychronK8_1.jpg" />
+    <Content Include="Content\Image\KeychronK8_2.jpg" />
+    <Content Include="Content\Image\KeychronK8_3.jpg" />
+    <Content Include="Content\Image\KeychrronK2.jpg" />
+    <Content Include="Content\Image\KeychrronK4.jpg" />
+    <Content Include="Content\Image\KeychrronK6.jpg" />
+    <Content Include="Content\Image\KeychrronK8.jpg" />
+    <Content Include="Content\Image\Lofree_mint.jpg" />
+    <Content Include="Content\Image\Lofree_red.jpg" />
+    <Content Include="Content\Image\Lofree_white.jpg" />
+    <Content Include="Content\Image\Lofree_white_1.jpg" />
     <Content Include="Content\Image\logo.svg" />
     <Content Include="Content\Image\slider1.png" />
     <Content Include="Content\Image\slider2.png" />
@@ -6798,6 +6818,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Models\CustomModels\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
