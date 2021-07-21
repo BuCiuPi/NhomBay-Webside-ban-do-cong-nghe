@@ -191,6 +191,7 @@
     <Compile Include="Library\MyString.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CoralCivet\Brand.cs" />
+    <Compile Include="Models\CoralCivet\Cart.cs" />
     <Compile Include="Models\CoralCivet\contact.cs" />
     <Compile Include="Models\CoralCivet\CoralCivetContext.cs" />
     <Compile Include="Models\CoralCivet\menu.cs" />
