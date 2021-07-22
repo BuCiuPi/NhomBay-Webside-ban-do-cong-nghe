@@ -6419,7 +6419,6 @@
     <Content Include="Areas\Admin\Views\User\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ViewAdmin\Menu.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Content\Layout\css\main.css.map" />
     <Content Include="Areas\Admin\Content\Layout\css\menu.css.map" />
     <Content Include="Areas\Admin\Content\Layout\css\responsive.css.map" />
@@ -6740,6 +6739,7 @@
     <Content Include="Areas\Admin\Content\Toast\src\scss\free\_utilities.scss" />
     <Content Include="Areas\Admin\Content\Toast\src\scss\free\_variables.scss" />
     <Content Include="Areas\Admin\Content\Toast\src\scss\mdb.free.scss" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

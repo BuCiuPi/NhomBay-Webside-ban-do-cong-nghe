@@ -2,6 +2,7 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Type>
 @{
+    CoralCivetContext db = new CoralCivetContext();
     var i = 1;
     ViewBag.Title = "Quản lý danh mục";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
@@ -139,6 +140,16 @@
                                     <input type="text" class="form-control" name="slug" placeholder="Vui lòng nhập đường dẫn">
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-control-label">Danh mục phụ thuộc</label>
+                                    <select class="form-control" name="parentid">
+                                        <option value="">Không có</option>
+                                        @foreach (var item in db.Types.Where(x => x.parentid != null && x.parentid != 0).OrderByDescending(n => n.name))
+                                        {
+                                            <option value="@item.ID">@item.name</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-control-label">Mô tả</label>
                                     <textarea class="form-control" name="metadesc" rows="4"></textarea>
                                 </div>
@@ -199,6 +210,16 @@
                         <div class="form-group">
                             <label class="form-control-label">Đường dẫn</label>
                             <input type="text" value="@item.slug" class="form-control" name="slug" placeholder="Vui lòng nhập đường dẫn">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Danh mục phụ thuộc</label>
+                            <select class="form-control" name="parentid">
+                                <option value="">Không có</option>
+                                @foreach (var cate in db.Types.Where(x => x.parentid == null || x.parentid == 0).OrderByDescending(n => n.name))
+                                {
+                                    <option value="@cate.ID" @(item.parentid == cate.ID ? "selected" : "")>@cate.name</option>
+                                }
+                            </select>
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">Mô tả</label>
