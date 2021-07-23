@@ -1,4 +1,4 @@
-﻿
+﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.ProductIndex
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -63,40 +63,11 @@
 
 
     <div class="col-70 border-debug">
-        <div class="col-1 slideshow-container">
-            <div class="mySlides">
-                <div class="numbertext">1 / 3</div>
-                <img src="~/Content/Image/slider1.png" style="width:100%">
-                <div class="text">Caption Text</div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
 
-            <div class="mySlides">
-                <div class="numbertext">1 / 3</div>
-                <img src="~/Content/Image/slider2.png" style="width:100%">
-                <div class="text">Caption Text</div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-
-            <div class="mySlides">
-                <div class="numbertext">1 / 3</div>
-                <img src="~/Content/Image/slider3.png" style="width:100%">
-                <div class="text">Caption Text</div>
-                <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-                <a class="next" onclick="plusSlides(1)">&#10095;</a>
-            </div>
-        </div>
-
-        <div style="text-align:center">
-            <span class="dot" onmouseover="currentSlide(1)"></span>
-            <span class="dot" onmouseover="currentSlide(2)"></span>
-            <span class="dot" onmouseover="currentSlide(3)"></span>
-        </div>
+        @Html.Partial("_SliderPartial", Model.sliders)
 
         <div class="row pd-25">
-            @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in ViewBag.Products)
+            @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in Model.products)
             {
                 <div class="col-3 index-item">
                     @Html.Partial("_ProductPartial", item)

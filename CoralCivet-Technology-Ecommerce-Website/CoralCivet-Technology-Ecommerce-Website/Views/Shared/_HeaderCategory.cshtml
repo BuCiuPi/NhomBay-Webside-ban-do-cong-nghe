@@ -1,0 +1,11 @@
+﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Type>
+
+@foreach (var item in Model)
+{
+<div class="col-3 ">
+    <div class="header-dropdown-category">
+        <img src="~/Content/Image/test1.png" alt="category.img" />
+        <a href="">@item.name</a>
+    </div>
+</div>
+}

@@ -1,7 +1,11 @@
-﻿
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CustomModels
+@model ProductDetail
+@using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
+
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 <hr />
@@ -15,50 +19,46 @@
     <div class="col-40 product-detail ">
         <div class="row">
             <h2 class="col-1 ">
-                @ViewBag.ProductDetail.Brand.name @ViewBag.ProductDetail.name
+                @Model.products.Brand.name @Model.products.name
                 <br />
             </h2>
-            
+
             <div class="col-2">
-                <p>ID: <b>@ViewBag.ProductDetail.ID</b></p>
+                <p>ID: <b>@Model.products.ID</b></p>
             </div>
             <div class="col-2 ">
-                <p>Status: @if (@ViewBag.ProductDetail.status == 0)
-                {
-                   <b>Stop selling</b>
-                }
-                else
-                {
-                    <b>Active</b>
-                }</p>
+                <p>
+                    Status: @if (Model.products.ID == 0)
+                    {
+                        <b>Stop selling</b>
+                    }
+                    else
+                    {
+                        <b>Active</b>
+                    }
+                </p>
             </div>
 
             <div class="col-1">
-                <h2 style="color: #FA7268;">Price: @ViewBag.ProductDetail.price </h2>
-                <hr/>
+                <h2 style="color: #FA7268;">Price: @Model.products.price </h2>
+                <hr />
             </div>
 
             <div class="col-1 product-description">
                 <p>
-                    @ViewBag.ProductDetail.detail
+                    @Model.products.detail
                 </p>
                 <hr />
             </div>
-            
+
             <div class="col-1 ">
                 <h2>Qty</h2>
-                <div class="row product-detail-button">
-                    <div class="col-70 border-debug " style="min-width:auto">
-                        <a>Add to cart</a>
-                    </div>
+                <div class="row product-detail-button border-debug">
+                    <a class="col-55" style="min-width:auto" href="#">Add to cart</a>
 
-                    <div class="col-25 border-debug " style="min-width:auto">
-                        <a>Like</a>
-                    </div>
-                        
-                    <div class="col-1 border-debug ">
-                        <a>BUY NOW</a>
-                    </div>
+                    <a class="col-25" style="min-width:auto" href="#">Like</a>
+
+                    <a class="col-95" href="@Url.Action("IndexAProduct","Order", new ordersdetail{productid = Model.products.ID })">BUY NOW</a>
                 </div>
                 <hr />
             </div>
@@ -78,7 +78,7 @@
 <hr />
 <div class="row">
     <h2 class="col-1">ORTHER PRODUCTS</h2>
-    @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in ViewBag.Products)
+    @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in Model.orderProducts)
     {
         <div class="col-5 index-item">
             @Html.Partial("_ProductPartial", item)

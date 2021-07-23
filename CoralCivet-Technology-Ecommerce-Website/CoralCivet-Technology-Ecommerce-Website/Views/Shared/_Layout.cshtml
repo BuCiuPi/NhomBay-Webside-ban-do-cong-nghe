@@ -6,36 +6,27 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="nav-container">
         <div class="small-navbar">
-            <a class="" href="@Url.Action("index","Home")">CoralCivet</a>
+            <a class="" href="@Url.Action("index", "Home")">CoralCivet</a>
             @Html.Partial("_LoginPartial")
         </div>
         <div class="nor-navbar">
             <div class="logo">
-                <img src="~/Content/Image/logo.svg" alt="logo.svg" />
+                <a href="@Url.Action("Index","Home")"><img src="~/Content/Image/logo.svg" alt="logo.svg" /></a>
             </div>
             <nav>
                 <ul id="menu-items">
                     <li class="dropdown">
-                        <a href="@Url.Action("index","Product")"><b>PRODUCT</b></a>
+                        <a href="@Url.Action("index", "Product")"><b>PRODUCT</b></a>
                         <span class="caret-down"></span>
                         <div class="dropdown-content">
                             <span class="caret-up @*border-debug*@"></span>
                             <div class="dropdown-bg">
                                 <div class="row ">
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
+                                    @{Html.RenderAction("ReturnHeaderCategory", "Home"); }
                                 </div>
                             </div>
                         </div>

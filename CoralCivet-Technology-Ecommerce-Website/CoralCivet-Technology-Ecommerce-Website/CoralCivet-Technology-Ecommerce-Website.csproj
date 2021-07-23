@@ -182,8 +182,10 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -204,6 +206,10 @@
     <Compile Include="Models\CoralCivet\topic.cs" />
     <Compile Include="Models\CoralCivet\Type.cs" />
     <Compile Include="Models\CoralCivet\TypeDetail.cs" />
+    <Compile Include="Models\CustomModels\HomeIndex.cs" />
+    <Compile Include="Models\CustomModels\OrderIndex.cs" />
+    <Compile Include="Models\CustomModels\ProductDetail.cs" />
+    <Compile Include="Models\CustomModels\ProductIndex.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -5627,14 +5633,15 @@
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Home\UnderConstruction.cshtml" />
     <Content Include="Views\Home\Cart.cshtml" />
-    <Content Include="Views\Home\Order.cshtml" />
     <Content Include="Views\Shared\_ProductPartial.cshtml" />
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
+    <Content Include="Views\Shared\_HeaderCategory.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Models\CustomModels\" />
+    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
