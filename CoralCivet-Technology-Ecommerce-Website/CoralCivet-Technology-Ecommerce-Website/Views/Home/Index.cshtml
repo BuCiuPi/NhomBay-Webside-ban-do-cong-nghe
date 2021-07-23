@@ -1,19 +1,19 @@
-﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.slider>
+﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.HomeIndex
 @{
     ViewBag.Title = "Home Page";
     <script src="~/Scripts/userIndex.js"></script>
 }
 <div>
-    @Html.Partial("_SliderPartial",Model)
+    @Html.Partial("_SliderPartial", Model.sliders)
 </div>
 
 
 <div class="index-category">
     <h1 class="col-1"><b>CATEGORIES</b></h1>
     <div class="row">
-        @foreach (var item in ViewBag.Types)
+        @foreach (var item in Model.types)
         {
-            <div class="col-3 index-item">
+            <div class="col-3 index-item animation-1">
                 <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="Keybroad.img" />
                 <h3><b>@item.name</b></h3>
             </div>
@@ -28,7 +28,7 @@
 <div class="index-bestSeller">
     <h1 class="col-5 text-center"><b>BEST SELLER</b></h1>
     <div class="row">
-        @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in ViewBag.Products)
+        @foreach (var item in Model.products)
         {
             <div class="col-4 index-item">
                 @Html.Partial("_ProductPartial", item)

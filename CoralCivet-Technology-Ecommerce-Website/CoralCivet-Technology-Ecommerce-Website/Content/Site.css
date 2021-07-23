@@ -182,8 +182,15 @@ textarea {
     width: 100px;
     max-width: 100%;
 }
+.header-dropdown-category{
 
+}
 
+    .header-dropdown-category a{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%,0);
+    }
 /*end header css*/
 /*---------------------------------------------------------*/
 /*footer css*/
@@ -192,7 +199,7 @@ textarea {
     align-items: stretch;
     flex-wrap: wrap;
     margin: auto;
-    justify-content: space-between; 
+    justify-content: space-around;
 }
 
 .footer-container {
@@ -314,10 +321,7 @@ ul {
 /* Next & previous buttons */
 .prev, .next {
     position: absolute;
-    height: 400px;
-    max-height: 100%;
-    max-width: 100%;
-    width: auto;
+    width: 5%;
     padding: 16px;
     color: rgb(0 0 0 / 0.8);
     font-weight: bold;
@@ -325,7 +329,8 @@ ul {
     transition: 0.6s ease;
     user-select: none;
     align-items: center;
-    background-color: rgb(255 255 255 / 0.4);
+    background-color: rgb(0 0 0 / 0.4);
+    height: 100%;
 }
 
 /* Position the "next button" to the right */
@@ -340,7 +345,7 @@ ul {
 
     /* On hover, add a black background color with a little bit see-through */
     .prev:hover, .next:hover {
-        background-color: rgb(255 255 255 / 0.8);
+        background-color: rgb(0 0 0 / 0.8);
     }
 
 /* Caption text */
@@ -349,10 +354,12 @@ ul {
     font-size: 20px;
     padding: 8px 12px;
     position: absolute;
-    bottom:0px;
-    width: 100%;
+    bottom: 0px;
+    width: 80%;
     text-align: center;
-    background-color: rgb(0 0 0 / 0.6);
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 51%, rgba(0,0,0,0) 100%);
+    transform: translate(-50%, 0);
+    left: 50%;
 }
 
 /* Number text (1/3 etc) */
@@ -362,6 +369,10 @@ ul {
     padding: 8px 12px;
     position: absolute;
     top: 0;
+    left: 50%;
+    background-color: rgb(0 0 0 / 0.60);
+    border-radius: 5px;
+    transform: translate(-50%, 0);
 }
 
 /* The dots/bullets/indicators */
@@ -427,10 +438,6 @@ ul {
     }
 
 
-
-    .col-3:hover {
-        transform: translateY(-10px) scale(1.02, 1.02);
-    }
 
 .col-4 {
     flex-basis: 22%;
@@ -607,6 +614,33 @@ ul {
     justify-content: center;
 }
 
+.col-95 {
+    flex-basis: 95%;
+    justify-content: center;
+}
+
+.col-90 {
+    flex-basis: 90%;
+    justify-content: center;
+}
+
+.col-85 {
+    flex-basis: 85%;
+    justify-content: center;
+}
+
+.col-80 {
+    flex-basis: 80%;
+    justify-content: center;
+}
+
+.col-90 {
+    flex-basis: 75%;
+    justify-content: center;
+}
+
+
+
 .expand {
     margin: 10px;
     border: 1px solid blue;
@@ -673,26 +707,28 @@ input:checked + .slider:before {
 
 .product-detail-button {
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-around;
+    width: 100%;
 }
 
-    .product-detail-button div {
-        align-content: center;
-        background-color: #FA7268;
-        margin: 0px auto 10px auto;
-    }
 
-        .product-detail-button div:hover {
-            background-color: #d9445f;
-        }
+
 
     .product-detail-button a {
+        align-content: center;
+        background-color: #FA7268;
         color: white;
-        margin: 10px 10px;
         display: block;
         text-decoration: none;
         cursor: pointer;
+        padding: 10px;
+        border: 1px solid black;
+        margin: 10px auto;
     }
+
+        .product-detail-button a:hover {
+            background-color: #d9445f;
+        }
 
 /*    EndProduct details*/
 
@@ -728,5 +764,12 @@ input:checked + .slider:before {
     width: 20px;
 }
 
+.animation-1 {
+    transform: translateY(-10px) scale(1.02, 1.02);
+}
+
+.animation-2 {
+    transform: translateY(-5px) scale(1.005, 1.0005);
+}
 /*---------------------------------------------------------------*/
 

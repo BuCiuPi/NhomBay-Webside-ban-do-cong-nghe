@@ -1,5 +1,6 @@
 ﻿using CoralCivet_Technology_Ecommerce_Website.Models;
 using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
+using CoralCivet_Technology_Ecommerce_Website.Models.CustomModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,10 +14,22 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
         CoralCivetContext context = new CoralCivetContext();
         public ActionResult Index()
         {
+            HomeIndex model = new HomeIndex();
+            model.types = context.Types.Where(p => p.parentId == null).ToList();
 
-            ViewBag.Types = context.Types.Where(p => p.parentId == null).ToList();
-            ViewBag.Products = context.Products.ToList().Take(4);
-            return View(context.sliders.Where(p => p.status == 1).ToList());
+            model.products = new List<Product>();
+            int count = 4;
+            foreach (var item in context.Products.ToList())
+            {
+                if (count != 0)
+                {
+                    model.products.Add(item);
+                    count--;
+                }
+            }
+             
+            model.sliders = context.sliders.Where(p => p.status == 1).ToList();
+            return View(model);
         }
 
         public ActionResult About()
@@ -39,16 +52,10 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             return View();
         }
 
-        public ActionResult Cart()
+        [HttpGet]
+        public ActionResult ReturnHeaderCategory()
         {
-
-            return View();
-        }
-
-        public ActionResult Order()
-        {
-
-            return View();
+            return PartialView("_HeaderCategory",context.Types.Where(p => p.parentId == null).ToList());
         }
     }
 }
