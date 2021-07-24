@@ -41,15 +41,15 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Delete(int? id)
         {
-            topic topicID = db.topics.Find(id);
-            if (topicID.posts.Any())
+            topic topicId = db.topics.Find(id);
+            if (topicId.posts.Any())
             {
-                TempData["NotificationError"] = String.Format("Không thể xóa chủ đề [{0}].", topicID.name);
+                TempData["NotificationError"] = String.Format("Không thể xóa chủ đề [{0}].", topicId.name);
                 return RedirectToAction("Index");
             }
-            db.topics.Remove(topicID);
+            db.topics.Remove(topicId);
             db.SaveChanges();
-            TempData["Notification"] = String.Format("Xóa chủ đề [{0}] thành công.", topicID.name);
+            TempData["Notification"] = String.Format("Xóa chủ đề [{0}] thành công.", topicId.name);
             return RedirectToAction("Index");
         }
     }
