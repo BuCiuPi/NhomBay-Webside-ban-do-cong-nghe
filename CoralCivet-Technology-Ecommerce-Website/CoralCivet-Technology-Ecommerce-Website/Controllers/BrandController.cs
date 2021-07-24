@@ -19,7 +19,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
         [ChildActionOnly]
         public ActionResult GetBrandList()
         {
-            return View("_HeaderBands",context.Brands.Where(p =>p.name.Equals("NO BRAND")).ToList());
+            return PartialView("_HeaderBands", context.Brands.Where(p => p.name != "NO BRAND").ToList());
         }
     }
 }
