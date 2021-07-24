@@ -32,12 +32,12 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Models.CoralCivet.Type type)
         {
-            if (type.parentid == type.ID)
+            if (type.parentId == type.Id)
             {
                 TempData["NotificationError"] = String.Format("Danh mục không thể phụ thuộc chính mình.", type.name);
                 return RedirectToAction("Index");
             }
-            else if(type.parentid != null && db.Types.FirstOrDefault(x => x.ID == type.parentid).parentid == type.ID)
+            else if(type.parentId != null && db.Types.FirstOrDefault(x => x.Id == type.parentId).parentId == type.Id)
             {
                 TempData["NotificationError"] = String.Format("Danh mục không thể phụ thuộc danh mục con của chính mình.", type.name);
                 return RedirectToAction("Index");
