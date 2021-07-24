@@ -1,5 +1,7 @@
-﻿
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;@using PagedList.Mvc;
+@model PagedList.IPagedList<slider>
 @{
+    var i = 1;
     ViewBag.Title = "Quản lý ảnh bìa";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -22,7 +24,7 @@
             </div>
             <div class="col-lg-3">
                 <b>Từ khóa</b>
-                <input class="form-control" type="search" value="" id="" placeholder="Tên ảnh bìa,Nội dung,...">
+                <input class="form-control" type="search" value="" id="" placeholder="Mã chủ đề, tên chủ đề, loại chủ đề,...">
             </div>
             <div class="col-lg-3">
                 <b>Ngày bắt đầu</b>
@@ -51,7 +53,7 @@
                 </select>
             </div>
             <div class="col-lg-12">
-                Hiện tại có <b>10</b> ảnh bìa
+                Hiện tại có <b>@ViewBag.Count</b> ảnh bìa
             </div>
         </div>
     </div>
@@ -63,9 +65,6 @@
                 <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addBanner">
                     <i class="fas fa-plus-circle">&nbsp;</i> THÊM ẢNH BÌA
                 </button>
-                <button type="button" class="btn btn-outline-danger waves-effect waves-light">
-                    <i class="fas fa-trash">&nbsp;</i> THÙNG RÁC
-                </button>
             </div>
             <br />
             <br />
@@ -76,37 +75,48 @@
                             <th>#</th>
                             <th>ẢNH BÌA</th>
                             <th>TÊN ẢNH BÌA</th>
-                            <th>MÔ TẢ</th>
+                            <th>LƯỢT XEM</th>
+                            <th>LINK</th>
                             <th>NGÀY CẬP NHẬT</th>
+                            <th>NGÀY TẠO</th>
                             <th>TÙY CHỌN</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for (var i = 1; i < 10; i++)
+                        @foreach (var item in Model)
                         {
                             <tr>
                                 <td>@i</td>
                                 <td>
-                                    <img src="~/Images/Banner/banner.jpg" style="width: 200px; height: 100px" />
+                                    <img src="~/Images/Banner/@item.img" style="width: 200px; height: 100px" />
                                 </td>
-                                <td>Ưu đãi mua máy tính và linh kiện</td>
-                                <td>Banner màu đỏ quảng cáo</td>
-                                <td>09/07/2021</td>
+                                <td>@item.name</td>
+                                <td>@item.orders</td>
+                                <td>@item.url</td>
+                                <td>@item.updated_at</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editBanner"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
-                                    <a data-toggle="modal" data-target="#deleteBanner"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                    <div class="label-main">
+                                        @if (item.status == 1)
+                                        {
+                                            <label class="label bg-success">Đang hoạt động</label>
+                                        }
+                                        else
+                                        {
+                                            <label class="label bg-danger">Không hoạt động</label>
+                                        }
+                                    </div>
+                                </td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#editBanner-@item.ID"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
+                                    <a data-toggle="modal" data-target="#deleteBanner-@item.ID"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
                                 </td>
                             </tr>
+                            i++;
                         }
                     </tbody>
                 </table>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-success">1</button>
-                        <button type="button" class="btn btn-success">2</button>
-                        <button type="button" class="btn btn-success">3</button>
-                        <button type="button" class="btn btn-success">4</button>
-                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </div>
             </div>
             <!--Thêm ảnh bìa-->
@@ -120,116 +130,129 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Ảnh bìa</label>
-                                <input type="file" class="form-control" name="Image">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tên ảnh bìa</label>
-                                <input type="text" class="form-control" name="BannerName" placeholder="Vui lòng nhập tên ảnh bìa">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mô tả</label>
-                                <textarea class="form-control" name="Describe" rows="4"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Link dẫn trang</label>
-                                <input type="text" class="form-control" name="Link" placeholder="Link dẫn trang">
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Hoạt động
-                                    </label>
+                            <form action="@Url.Action("Create","Slider")" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label class="form-control-label">Ảnh bìa</label>
+                                    <input type="file" class="form-control" name="imgUpload">
                                 </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Không hoạt động
-                                    </label>
+                                <div class="form-group">
+                                    <label class="form-control-label">Tên ảnh bìa</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Vui lòng nhập tên ảnh bìa">
                                 </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Sửa ảnh bìa-->
-            <div class="modal fade" id="editBanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" style="max-width: 1060px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sửa ảnh bìa - Ưu đãi mua máy tính và linh kiện</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Ảnh bìa</label>
-                                <input type="file" class="form-control" name="Image">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tên ảnh bìa</label>
-                                <input type="text" class="form-control" value="Ưu đãi mua máy tính và linh kiện" name="BannerName" placeholder="Vui lòng nhập tên ảnh bìa">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mô tả</label>
-                                <textarea class="form-control" name="Describe" rows="4">Banner màu đỏ quảng cáo</textarea>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Link dẫn trang</label>
-                                <input type="text" class="form-control" name="Link" placeholder="Link dẫn trang" value="/Admin/Slider">
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Hoạt động
-                                    </label>
+                                <div class="form-group">
+                                    <label class="form-control-label">Link dẫn trang</label>
+                                    <input type="text" class="form-control" name="url" placeholder="Link dẫn trang">
                                 </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Không hoạt động
-                                    </label>
+                                <div class="form-group">
+                                    <label class="form-control-label">Lượt xem</label>
+                                    <input type="text" class="form-control" name="orders" placeholder="Nhập lượt xem (Mặc định là 0)" value="0">
                                 </div>
-                            </fieldset>
+                                <fieldset class="form-group">
+                                    <label class="form-control-label">Tình trạng</label>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="Active" value="1" checked>
+                                            Hoạt động
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input type="radio" class="form-check-input" name="Active" valuee="0">
+                                            Không hoạt động
+                                        </label>
+                                    </div>
+                                </fieldset>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Xóa ảnh bìa-->
-            <div class="modal fade" id="deleteBanner" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Xóa ảnh bìa - Ưu đãi mua máy tính và linh kiện</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Bạn có chắc muốn xóa ảnh bìa này??
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
+@foreach (var item in Model)
+{
+    <!--Sửa ảnh bìa-->
+    <div class="modal fade" id="editBanner-@item.ID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width: 1060px;">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Sửa ảnh bìa - @item.name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form action="@Url.Action("Edit","Slider")" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <input type="hidden" name="ID" value="@item.ID" />
+                        <input type="hidden" name="img" value="@item.img" />
+                        <div class="form-group">
+                            <label class="form-control-label">Ảnh bìa</label>
+                            <input type="file" class="form-control" name="imgUpload">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Tên ảnh bìa</label>
+                            <input type="text" class="form-control" value="@item.name" name="name" placeholder="Vui lòng nhập tên ảnh bìa">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Link dẫn trang</label>
+                            <input type="text" class="form-control" value="@item.url" name="url" placeholder="Link dẫn trang">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Lượt xem</label>
+                            <input type="number" class="form-control" name="orders" placeholder="Nhập lượt xem (Mặc định là 0)" value="@item.orders">
+                        </div>
+                        <fieldset class="form-group">
+                            <label class="form-control-label">Tình trạng</label>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="status" value="1" @(item.status == 1 ? "checked" : "")>
+                                    Hoạt động
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <label class="form-check-label">
+                                    <input type="radio" class="form-check-input" name="status" value="0" @(item.status != 1 ? "checked" : "")>
+                                    Không hoạt động
+                                </label>
+                            </div>
+                        </fieldset>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Xóa ảnh bìa-->
+    <div class="modal fade" id="deleteBanner-@item.ID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa ảnh bìa - @item.name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc muốn xóa ảnh bìa này??
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                    <button type="button" onclick="window.location.href = '/Admin/Slider/Delete?id=@item.ID'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}

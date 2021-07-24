@@ -105,8 +105,8 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editCategory-@item.ID"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
-                                    <a data-toggle="modal" data-target="#deleteCategory-@item.ID"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                    <a data-toggle="modal" data-target="#editCategory-@item.Id"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
+                                    <a data-toggle="modal" data-target="#deleteCategory-@item.Id"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
                                 </td>
                             </tr>
                             i++;
@@ -143,9 +143,9 @@
                                     <label class="form-control-label">Danh mục phụ thuộc</label>
                                     <select class="form-control" name="parentid">
                                         <option value="">Không có</option>
-                                        @foreach (var item in db.Types.Where(x => x.parentid != null && x.parentid != 0).OrderByDescending(n => n.name))
+                                        @foreach (var item in db.Types.Where(x => x.parentId != null && x.parentId != 0).OrderByDescending(n => n.name))
                                         {
-                                            <option value="@item.ID">@item.name</option>
+                                            <option value="@item.Id">@item.name</option>
                                         }
                                     </select>
                                 </div>
@@ -188,7 +188,7 @@
 @foreach (var item in Model)
 {
     <!--Sửa danh mục-->
-    <div class="modal fade" id="editCategory-@item.ID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editCategory-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" style="max-width: 1060px;">
             <div class="modal-content">
                 <div class="modal-header">
@@ -201,7 +201,7 @@
                     <form action="@Url.Action("Edit","Category")" method="post">
                         @Html.AntiForgeryToken()
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <input type="hidden" name="ID" value="@item.ID" />
+                        <input type="hidden" name="ID" value="@item.Id" />
                         <input type="hidden" name="created_at" value="@item.created_at" />
                         <div class="form-group">
                             <label class="form-control-label">Tên danh mục</label>
@@ -215,9 +215,9 @@
                             <label class="form-control-label">Danh mục phụ thuộc</label>
                             <select class="form-control" name="parentid">
                                 <option value="">Không có</option>
-                                @foreach (var cate in db.Types.Where(x => x.parentid == null || x.parentid == 0).OrderByDescending(n => n.name))
+                                @foreach (var cate in db.Types.Where(x => x.parentId == null || x.parentId == 0).OrderByDescending(n => n.name))
                                 {
-                                    <option value="@cate.ID" @(item.parentid == cate.ID ? "selected" : "")>@cate.name</option>
+                                    <option value="@cate.Id" @(item.parentId == cate.Id ? "selected" : "")>@cate.name</option>
                                 }
                             </select>
                         </div>
@@ -255,7 +255,7 @@
         </div>
     </div>
     <!--Xóa danh mục-->
-    <div class="modal fade" id="deleteCategory-@item.ID" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="deleteCategory-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -269,7 +269,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
-                    <button type="button" onclick="window.location.href = '/Admin/Category/Delete?id=@item.ID'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                    <button type="button" onclick="window.location.href = '/Admin/Category/Delete?id=@item.Id'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
                 </div>
             </div>
         </div>
