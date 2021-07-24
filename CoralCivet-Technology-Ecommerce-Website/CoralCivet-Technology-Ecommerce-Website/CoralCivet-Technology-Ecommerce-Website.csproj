@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -114,12 +120,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -182,6 +182,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -5115,6 +5116,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\find.svg" />
+    <Content Include="Content\Image\Keyboard.jpg" />
     <Content Include="Content\Image\KeychronK2_1.jpg" />
     <Content Include="Content\Image\KeychronK2_2.jpg" />
     <Content Include="Content\Image\KeychronK2_3.jpg" />
@@ -5136,9 +5138,12 @@
     <Content Include="Content\Image\Lofree_white.jpg" />
     <Content Include="Content\Image\Lofree_white_1.jpg" />
     <Content Include="Content\Image\logo.svg" />
-    <Content Include="Content\Image\slider1.png" />
-    <Content Include="Content\Image\slider2.png" />
-    <Content Include="Content\Image\slider3.png" />
+    <Content Include="Content\Image\Mouse.jpg" />
+    <Content Include="Content\Image\Other.jpg" />
+    <Content Include="Content\Image\slider_KeychronK3.jpg" />
+    <Content Include="Content\Image\slider_keychronK4.jpg" />
+    <Content Include="Content\Image\slider_Lofree1.jpg" />
+    <Content Include="Content\Image\slider_LofreeWanderfree.jpg" />
     <Content Include="Content\Image\test1.png" />
     <Content Include="Content\Image\test2.png" />
     <Content Include="Areas\Admin\Content\Layout\css\bootstrap-theme.min.css" />
@@ -5637,10 +5642,12 @@
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
     <Content Include="Views\Shared\_HeaderCategory.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Shared\_HeaderBands.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Views\Brand\" />
     <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>

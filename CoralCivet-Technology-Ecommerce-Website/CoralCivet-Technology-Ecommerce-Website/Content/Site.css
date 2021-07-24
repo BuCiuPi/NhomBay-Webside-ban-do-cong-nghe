@@ -168,7 +168,7 @@ textarea {
 
 .dropdown-bg {
     margin: 0;
-    background-color: gray;
+    background-color: #2f2f2f;
     padding: 12px 16px;
     border-radius: 5px;
 }
@@ -394,9 +394,37 @@ ul {
 .index-item {
     align-content: center;
 }
+
+.category-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+    .category-item h3 {
+        width: auto;
+        position: absolute;
+        color: white;
+        text-shadow: 0px 0px 8px #000000;
+        transition-duration: 0.3s;
+    }
+
+    .category-item:hover h3 {
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 51%, rgba(0,0,0,0) 100%);
+    }
+
+    .category-item a img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;
+       
+    }
+
 .index-category {
     max-width: 1300px;
     text-align: center;
+
 }
     .index-category .row h3 {
         font-size: 30px;
@@ -771,6 +799,10 @@ input:checked + .slider:before {
 
 .animation-2 {
     transform: translateY(-5px) scale(1.005, 1.0005);
+}
+
+.background-white {
+    background-color: #f6f6f6;
 }
 /*---------------------------------------------------------------*/
 
