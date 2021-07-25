@@ -1,0 +1,18 @@
+﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Brand>
+
+@foreach (var item in Model)
+{
+    <h2><b>@item.name</b></h2>
+    <hr />
+
+    <div class="row">
+        @foreach (var product in item.Products)
+        {
+        <div class="col-5">
+            @Html.Partial("_ProductPartial", product)
+        </div>
+        }
+    </div>
+
+}
+

@@ -213,6 +213,7 @@
     <Compile Include="Models\CoralCivet\topic.cs" />
     <Compile Include="Models\CoralCivet\Type.cs" />
     <Compile Include="Models\CoralCivet\TypeDetail.cs" />
+    <Compile Include="Models\CustomModels\BrandIndex.cs" />
     <Compile Include="Models\CustomModels\HomeIndex.cs" />
     <Compile Include="Models\CustomModels\OrderIndex.cs" />
     <Compile Include="Models\CustomModels\ProductDetail.cs" />
@@ -6837,11 +6838,13 @@
     <Content Include="Views\Shared\_HeaderBands.cshtml" />
     <Content Include="Views\Shared\_ProductImgSliderPartial.cshtml" />
     <Content Include="Views\Brand\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Shared\_BrandPartial.cshtml" />
+    <Content Include="Views\Product\NewProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Views\Cart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
