@@ -13,7 +13,8 @@ Author URL: http://w3layouts.com
 <html lang="zxx">
 
 <head>
-    <title> CoralCivet Technology Ecommerce | Đăng nhập :: W3layouts
+    <title>
+        CoralCivet Technology Ecommerce | Đăng nhập :: W3layouts
     </title>
     <!-- Meta tag Keywords -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,7 +41,7 @@ Author URL: http://w3layouts.com
                 <div class="main-hotair">
                     <div class="content-wthree">
                         <h2>ĐĂNG NHẬP ADMIN</h2>
-                        <form action="#" method="post">
+                        <form action="@Url.Action("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl })" method="post">
                             <input type="text" class="text" name="text" placeholder="Tài khoản" required="" autofocus>
                             <input type="password" class="password" name="password" placeholder="Mật khẩu" required="" autofocus>
                             <button class="btn" type="submit">Đăng nhập</button>
