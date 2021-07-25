@@ -3,7 +3,7 @@
 <a href="@Url.Action("Detail","Product",Model)" >
     <div class="product">
         <div class="product-img">
-            <img src="~/Content/Image/test2.png" class="img-responsive center-block" alt="Keybroad.img" />
+            <img src="@Model.ProductImgs.ElementAt(0).name" class="img-responsive center-block" alt="@Model.ProductImgs.ElementAt(0).name" />
             <div class="btn-add">
                 ADD TO CART
             </div>

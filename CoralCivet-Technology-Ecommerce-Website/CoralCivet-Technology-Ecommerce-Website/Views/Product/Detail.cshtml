@@ -11,9 +11,7 @@
 <hr />
 <div class="row align-flex-start">
     <div class="col-55 ">
-        <div class="row ">
-            <img src="~/Content/Image/test2.png" alt="product.img" />
-        </div>
+        @Html.Partial("_ProductImgSliderPartial",Model.products.ProductImgs)
     </div>
 
     <div class="col-40 product-detail ">
@@ -85,4 +83,6 @@
         </div>
     }
 </div>
+
+<script src="~/Scripts/userIndex.js"></script>
 
