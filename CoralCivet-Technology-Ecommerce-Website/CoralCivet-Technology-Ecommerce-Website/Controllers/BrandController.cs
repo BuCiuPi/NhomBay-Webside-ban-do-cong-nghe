@@ -17,7 +17,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             ProductIndex model = new ProductIndex();
             model.products = new List<Product>();
             int count = 4;
-            foreach (var item in context.Products.Where(p=>).ToList())
+            foreach (var item in context.Products.Where(p=>p.brandId == Id).ToList())
             {
                 if (count != 0)
                 {
