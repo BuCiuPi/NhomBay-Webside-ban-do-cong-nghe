@@ -1,0 +1,18 @@
+﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.ProductIndex
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("_SliderPartial", Model.sliders)
+
+<div class="row pd-25">
+    @foreach (CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product item in Model.products)
+    {
+        <div class="col-3 index-item">
+            @Html.Partial("_ProductPartial", item)
+        </div>
+    }
+</div>
+

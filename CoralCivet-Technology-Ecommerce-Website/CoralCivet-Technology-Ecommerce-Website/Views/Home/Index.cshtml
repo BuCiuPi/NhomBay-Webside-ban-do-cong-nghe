@@ -1,6 +1,6 @@
 ﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.HomeIndex
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "CoralCivet";
     <script src="~/Scripts/userIndex.js"></script>
 }
 <div>
@@ -13,10 +13,24 @@
     <div class="row">
         @foreach (var item in Model.types)
         {
-            <div class="col-3 index-item animation-1">
-                <img src="~/Content/Image/test1.png" class="img-responsive center-block" alt="Keybroad.img" />
-                <h3><b>@item.name</b></h3>
-            </div>
+        <div class="col-3 index-item category-item animation-1">
+            <a>
+                @if (@item.name == "Keyboard")
+                {
+                    <img src="~/Content/Image/Keyboard.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+                }
+                else if (@item.name == "Mouse")
+                {
+                    <img src="~/Content/Image/Mouse.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+                }
+                else
+                {
+                    <img src="~/Content/Image/Other.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+                }
+
+            </a>
+            <h3><b>@item.name</b></h3>
+        </div>
         }
     </div>
     <br />
