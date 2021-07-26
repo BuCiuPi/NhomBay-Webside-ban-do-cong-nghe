@@ -1,4 +1,4 @@
-﻿
+﻿@model  CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.CartIndex
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -10,48 +10,51 @@
             <div class="col-1 cart-title">
                 <p><b>CART</b></p>
             </div>
-
-            <div class="col-1 ">
-                <hr />
-                <div class="row cart-product-item">
-                    <div class="col-4 border-debug">
-                        <img src="~/Content/Image/test2.png" alt="Product.img" />
-                    </div>
-                    <div class="col-2 border-debug">
-                        <h2>Product Name</h2>
-                        <h3>Price:</h3>
-                        <br />
-                        <div class="row">
-                            <div class="col-2">
-                                Qty:
-                            </div>
-                            <div class="col-2">
-                                Color:
+            @foreach (var item in Model.Carts)
+            {
+                <div class="col-1 ">
+                    <hr />
+                    <div class="row cart-product-item">
+                        <div class="col-4 border-debug">
+                            <img src="@item.Product.ProductImgs.ElementAt(0).name" alt="Product.img" />
+                        </div>
+                        <div class="col-2 border-debug">
+                            <h2>@item.Product.Brand.name @item.Product.name</h2>
+                            <h3>Price: @item.Product.price.ToString("N") VND</h3>
+                            <br />
+                            <div class="row">
+                                <div class="col-2">
+                                    Qty: @item.value
+                                </div>
+                                <div class="col-2">
+                                    Color: black
+                                </div>
                             </div>
                         </div>
+                        <div class="col-4 border-debug">
+                            <p> VND</p>
+                            <p>available</p>
+                            <button>LIKE</button>
+                            <br />
+                            <br />
+                            <button>DELETE</button>
+                        </div>
                     </div>
-                    <div class="col-4 border-debug">
-                        <p>200.000 VND</p>
-                        <p>available</p>
-                        <button>LIKE</button>
-                        <br />
-                        <br />
-                        <button>DELETE</button>
-                    </div>
-                </div>
 
-            </div>
+                </div>
+            }
+
         </div>
     </div>
     <div class="col-40 border-debug cart-order">
-        <p>ORDER</p>
+        <h3>ORDER</h3>
         <hr />
-        <p>promo code</p>
-        <input type="text" />
+        <pre>promo code <input type="text" /></pre>
+        
         <hr />
-        <p>Order</p>
-        <p>Discount</p>
-        <button>CONTINUE</button>
+        <p>Order: @Model.total.ToString("N") VND</p>
+        <p>Discount: 0</p>
+        <div class="btn-continue">CONTINUE</div>
     </div>
 
 </div>

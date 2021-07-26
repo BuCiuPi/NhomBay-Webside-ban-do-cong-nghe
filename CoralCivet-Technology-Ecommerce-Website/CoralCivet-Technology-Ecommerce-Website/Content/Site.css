@@ -786,10 +786,17 @@ input:checked + .slider:before {
     padding: 10px;
     z-index: 10;
     border-radius: 10px 0px 10px 5px;
+    text-align: center;
+    cursor: pointer;
 }
 .floating-cart img{
     width: 20px;
 }
+
+    .floating-cart p{
+        margin: auto;
+        margin-top: 5px;
+    }
 
 .animation-1 {
     transform: translateY(-10px) scale(1.02, 1.02);

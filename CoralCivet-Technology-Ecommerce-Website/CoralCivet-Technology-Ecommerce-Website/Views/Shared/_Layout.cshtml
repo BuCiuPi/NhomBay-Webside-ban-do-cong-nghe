@@ -55,13 +55,11 @@
         </div>
     </div>
 
-    <div class="floating-cart">
-        <img src="~/Content/Image/cart.png"/>
-    </div>
+    @{ Html.RenderAction("GetCart", "Cart");}
 
     <div class="body-container body-margin">
         @RenderBody()
-        <hr/>
+        <hr />
     </div>
 
     <div class="footer-container">
