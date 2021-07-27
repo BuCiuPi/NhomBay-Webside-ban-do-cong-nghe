@@ -91,7 +91,7 @@
                         <tr>
                             <td>@i</td>
                             <td>
-                                <img src="~/Images/Product/@item.ProductImgs.ToArray()[0].name" style="width: 100px; height: 100px" />
+                                <img src="~/Content/Image/Product/@item.ProductImgs.ToArray()[0].name" style="width: 100px; height: 100px" />
                             </td>
                             <td>@item.name</td>
                             <td>None</td>
@@ -172,7 +172,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Thuộc tính</label>
-                                    <select class="ui fluid multiple search selection dropdown" name="typeID" required>
+                                    <select class="ui fluid search dropdown" name="typeID" required>
                                         <option value="">Chọn thuộc tính</option>
                                         @foreach (var item in db.Types.Where(x => x.parentId != null && x.parentId != 0).OrderByDescending(n => n.name))
                                         {

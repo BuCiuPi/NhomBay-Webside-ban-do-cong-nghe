@@ -90,7 +90,7 @@
                             <tr>
                                 <td>@i</td>
                                 <td>
-                                    <img src="~/Images/Post/@item.img" style="width: 100px; height: 100px" />
+                                    <img src="~/Content/Image/Post/@item.img" style="width: 100px; height: 100px" />
                                 </td>
                                 <td>@item.metakey</td>
                                 <td>@item.title</td>
@@ -258,11 +258,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">Nội dung</label>
-                                        <textarea class="form-control" name="detail" id="editorEdit" rows="4">@item.detail</textarea>
+                                        <textarea class="form-control" name="detail" id="editorEdit-@item.Id" rows="4">@item.detail</textarea>
                                     </div>
                                     <script>
                                         ClassicEditor
-                                            .create(document.querySelector('#editorEdit'))
+                                            .create(document.querySelector('#editorEdit-@item.Id'))
                                             .catch(error => {
                                                 console.error(error);
                                             });

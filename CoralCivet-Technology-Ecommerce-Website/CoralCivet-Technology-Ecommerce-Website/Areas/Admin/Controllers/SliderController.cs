@@ -34,7 +34,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             {
                 var fileimg = Path.GetFileName(imgUpload.FileName);
                 //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Banner"), fileimg);
+                var pa = Path.Combine(Server.MapPath("~/Content/Image/Banner"), fileimg);
                 imgUpload.SaveAs(pa);
             }
             slider.orders = 0;
@@ -54,7 +54,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             {
                 var fileimg = Path.GetFileName(imgUpload.FileName);
                 //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Banner"), fileimg);
+                var pa = Path.Combine(Server.MapPath("~/Content/Image/Banner"), fileimg);
                 imgUpload.SaveAs(pa);
                 slider.img = imgUpload.FileName;
             }

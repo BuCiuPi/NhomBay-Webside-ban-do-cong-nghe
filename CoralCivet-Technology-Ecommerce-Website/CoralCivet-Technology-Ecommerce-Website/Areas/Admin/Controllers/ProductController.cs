@@ -33,7 +33,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             {
                 var fileimg = Path.GetFileName(imgUpload.FileName);
                 //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Product"), fileimg);
+                var pa = Path.Combine(Server.MapPath("~/Content/Image/Product"), fileimg);
                 imgUpload.SaveAs(pa);
             }
             product.created_at = DateTime.Now;
@@ -67,7 +67,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             {
                 var fileimg = Path.GetFileName(imgUpload.FileName);
                 //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Product"), fileimg);
+                var pa = Path.Combine(Server.MapPath("~/Content/Image/Product"), fileimg);
                 imgUpload.SaveAs(pa);
                 var productimg = db.ProductImgs.FirstOrDefault(x => x.productId == product.ID);
                 productimg.name = imgUpload.FileName;
