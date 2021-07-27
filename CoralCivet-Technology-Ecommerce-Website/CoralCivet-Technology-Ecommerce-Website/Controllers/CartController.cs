@@ -66,5 +66,22 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             context.SaveChanges();
             return Redirect(url);
         }
+
+
+        public ActionResult DelCart(int productId)
+        {
+            Cart cart = new Cart();
+
+            cart.productId = productId;
+            cart.userId = User.Identity.GetUserId();
+
+            var updb = context.Carts.FirstOrDefault(p => p.userId == cart.userId && p.productId == productId);
+            if (updb!=null)
+            {
+                context.Carts.Remove(updb);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index","Cart");
+        }
     }
 }

@@ -3,55 +3,115 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div class="row">
-    <div class="col-55 border-debug cart-product">
-        <div class="row">
-            <div class="col-1 cart-title">
-                <p><b>DELIVERY INFORMATION</b></p>
-
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-                <input type="text" />
-            </div>
-
-            <div class="col-1 cart-title">
-                <p><b>DELIVERY TYPE</b></p>
-
-                <input type="text" />
-                <input type="text" />
-            </div>
-        </div>
-    </div>
-    <div class="col-40 border-debug cart-order">
-        <p>ORDER</p>
-        <hr />
-
-        <div class="row">
-            <div class="order-item">
-                @foreach (var item in Model.orderList)
-                {
-                    <div class="col-1">
-                        <p><b>@item.Product.Brand.name @item.Product.name</b></p>
-                        <p>@item.Product.price</p>
-                        <p>Qty: @item.quantity</p>
+@using (Html.BeginForm("Index", "Order", FormMethod.Post))
+{
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="row">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="col-55 border-debug cart-product">
+            <div class="row">
+                <div class="col-1 cart-title">
+                    <p><b>DELIVERY INFORMATION</b></p>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.order.deliveryname, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.order.deliveryname, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.order.deliveryname, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                }
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.order.deliveryaddress, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.order.deliveryaddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.order.deliveryaddress, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.order.deliveryphone, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.order.deliveryphone, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.order.deliveryphone, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.order.deliveryemail, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.order.deliveryemail, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.order.deliveryemail, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-1 cart-title">
+                    <p><b>DELIVERY TYPE</b></p>
+                    <div class="form-group border-debug">
+                        @Html.LabelFor(model => model.order.deliveryPaymentMethod, htmlAttributes: new { @class = "control-label col-55 border-debug" })
+                        <div class="col-1 border-debug">
+                            COD: @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "COD")
+
+                            BANK: @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "BANK")
+
+                            @Html.ValidationMessageFor(model => model.order.deliveryPaymentMethod, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group border-debug">
+                        @Html.LabelFor(model => model.order.transport_type, htmlAttributes: new { @class = "control-label col-55 border-debug" })
+                        <div class="col-1 border-debug">
+
+                            Coral Civet: @Html.RadioButtonFor(model => model.order.transport_type, "Coral Civet")
+
+                            Ninja Lead: @Html.RadioButtonFor(model => model.order.transport_type, "Ninja Lead")
+
+                            @Html.ValidationMessageFor(model => model.order.transport_type, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
+        <div class="col-40 border-debug cart-order">
+            <p>ORDER</p>
+            <hr />
 
-        <hr />
-        <p>Order: </p>
-        <p>Discount: </p>
-        <p>Delivery fee: 25.000 VND</p>
-        <hr />
-        <p>Total: </p>
-        <button>COMFIRM ORDER</button>
+            <div class="row">
+                <div class="order-item">
+                    @foreach (var item in Model.orderDetailList)
+                    {
+                        <div class="col-1">
+                            <p><b>@item.Product.Brand.name @item.Product.name</b></p>
+                            <p>@item.Product.price</p>
+                            <p>Qty: @item.quantity</p>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <hr />
+            <p>Order: </p>
+            <p>Discount: </p>
+            <p id="delivery-fee">Delivery fee: 25.000 VND</p>
+            <hr />
+            <p>Total: </p>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+
+        </div>
+
     </div>
+    <script src="~/Scripts/userIndex.js"></script>
+}
 
-</div>
+
+
+
+
 

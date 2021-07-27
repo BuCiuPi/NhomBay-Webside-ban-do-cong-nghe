@@ -14,7 +14,7 @@
         @foreach (var item in Model.types)
         {
         <div class="col-3 index-item category-item animation-1">
-            <a>
+            <a href="@Url.Action("Index","Product",new { id = item.Id })">
                 @if (@item.name == "Keyboard")
                 {
                     <img src="~/Content/Image/Category/Keyboard.jpg" class="img-responsive center-block" alt="Keybroad.img" />

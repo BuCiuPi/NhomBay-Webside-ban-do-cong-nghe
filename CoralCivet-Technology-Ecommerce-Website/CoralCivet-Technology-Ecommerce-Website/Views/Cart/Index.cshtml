@@ -5,56 +5,68 @@
 }
 
 <div class="row">
-    <div class="col-55 border-debug cart-product">
+    <div class="col-55 cart-product">
         <div class="row">
             <div class="col-1 cart-title">
-                <p><b>CART</b></p>
+                <h3><b>CART</b></h3>
             </div>
-            @foreach (var item in Model.Carts)
+            @if (Model.Carts.Count() < 1)
             {
-                <div class="col-1 ">
-                    <hr />
-                    <div class="row cart-product-item">
-                        <div class="col-4 border-debug">
-                            <img src="@item.Product.ProductImgs.ElementAt(0).name" alt="Product.img" />
-                        </div>
-                        <div class="col-2 border-debug">
-                            <h2>@item.Product.Brand.name @item.Product.name</h2>
-                            <h3>Price: @item.Product.price.ToString("N") VND</h3>
-                            <br />
-                            <div class="row">
-                                <div class="col-2">
-                                    Qty: @item.value
-                                </div>
-                                <div class="col-2">
-                                    Color: black
+                <h1 class="col-1">No Product</h1>
+            }
+            else
+            {
+                foreach (var item in Model.Carts)
+                {
+                    <div class="col-1 ">
+                        <hr />
+                        <div class="row cart-product-item">
+                            <div class="col-4 border-debug">
+                                <img src="@item.Product.ProductImgs.ElementAt(0).name" alt="Product.img" />
+                            </div>
+                            <div class="col-2 border-debug">
+                                <h2>@item.Product.Brand.name @item.Product.name</h2>
+                                <h3>Price: @item.Product.price.ToString("N") VND</h3>
+                                <br />
+                                <div class="row">
+                                    <div class="col-2">
+                                        Qty: @item.value
+                                    </div>
+                                    <div class="col-2">
+                                        Color: black
+                                    </div>
                                 </div>
                             </div>
+                            <div class="col-4 border-debug">
+                                <p> VND</p>
+                                <p>available</p>
+                                <button>LIKE</button>
+                                <br />
+                                <br />
+                                <div class="btn-cart-del" onclick="location.href='@Url.Action("DelCart","Cart", new { productId = item.productId })'">DELETE</div>
+                            </div>
                         </div>
-                        <div class="col-4 border-debug">
-                            <p> VND</p>
-                            <p>available</p>
-                            <button>LIKE</button>
-                            <br />
-                            <br />
-                            <button>DELETE</button>
-                        </div>
-                    </div>
 
-                </div>
+                    </div>
+                }
             }
 
         </div>
     </div>
-    <div class="col-40 border-debug cart-order">
-        <h3>ORDER</h3>
+
+    <div class="col-40 cart-order">
+        <h3><b>ORDER</b></h3>
         <hr />
         <pre>promo code <input type="text" /></pre>
         
         <hr />
-        <p>Order: @Model.total.ToString("N") VND</p>
-        <p>Discount: 0</p>
-        <div class="btn-continue">CONTINUE</div>
+        <h4><b>Order:</b> @Model.total.ToString("N") VND</h4>
+        <h5><b>Discount:</b> 0</h5>
+        <div class="btn-continue col-1 " onclick="location.href='@Url.Action("Index","Order")'">
+            <h4>
+                <b>CONTINUE</b>
+            </h4>
+        </div>
     </div>
 
 </div>
