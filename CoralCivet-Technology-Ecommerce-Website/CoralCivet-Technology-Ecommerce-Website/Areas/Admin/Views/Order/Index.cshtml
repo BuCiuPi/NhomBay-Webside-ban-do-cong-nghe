@@ -1,5 +1,8 @@
-﻿
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
+@using PagedList.Mvc;
+@model PagedList.IPagedList<order>
 @{
+    var i = 1;
     ViewBag.Title = "Quản lý đơn hàng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -51,7 +54,7 @@
                 </select>
             </div>
             <div class="col-lg-12">
-                Hiện tại có <b>10</b> đơn hàng
+                Hiện tại có <b>@ViewBag.Count</b> đơn hàng
             </div>
         </div>
     </div>
@@ -60,199 +63,117 @@
     <div class="card-block">
         <div class="row">
             <div class="col-lg-6">
-                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addOrder">
-                    <i class="fas fa-plus-circle">&nbsp;</i> THÊM ĐƠN HÀNG
-                </button>
-                <button type="button" class="btn btn-outline-danger waves-effect waves-light">
-                    <i class="fas fa-trash">&nbsp;</i> THÙNG RÁC
-                </button>
             </div>
             <br />
             <br />
             <div class="col-sm-12 table-responsive">
-                <table class="table table-hover">
+                <table class="table table-bordered" cellspacing="0">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Mã ĐƠN HÀNG</th>
+                            <th>MÃ ĐƠN HÀNG</th>
                             <th>TÊN ĐƠN HÀNG</th>
-                            <th>CÁC đơn hàng MUA</th>
+                            <th>CÁC ĐƠN HÀNG MUA</th>
+                            <th>SỐ LƯỢNG</th>
+                            <th>ĐƠN GIÁ</th>
                             <th>TỔNG TIỀN</th>
                             <th>TRẠNG THÁI</th>
-                            <th>NGÀY TẠO</th>
+                            <th>NGÀY CẬP NHẬT</th>
                             <th>TÙY CHỌN</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @for (var i = 1; i < 10; i++)
+                        @foreach (var item in Model)
                         {
+                            var col = item.ordersdetails.Count() > 1 ? ("rowspan = " + item.ordersdetails.Count()) : ("");
                             <tr>
-                                <td>@i</td>
-                                <td>DH-122</td>
-                                <td>Bàn phím đẹp và chất lượng</td>
+                                <td @col>@i</td>
+                                <td @col>@item.code</td>
+                                <td @col>@item.deliveryname</td>
                                 <td>
-                                    <img src="~/Images/Product/15629035958661416261.jpg" style="width: 100px; height: 100px" />
-                                    <img src="~/Images/Product/15629035958661416261.jpg" style="width: 100px; height: 100px" />
+                                    @item.ordersdetails.ToArray()[0].Product.name
                                 </td>
-                                <td>3.800.000 vnđ</td>
                                 <td>
-                                    <div class="label-main">
-                                        <label class="label bg-danger">Chưa giao hàng</label>
-                                    </div>
+                                    @item.ordersdetails.ToArray()[0].quantity
                                 </td>
-                                <td>09/07/2021</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editProduct"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
-                                    <a data-toggle="modal" class="text-success"><i class="fa fa-check-circle">&nbsp;</i>Check</a> |
-                                    <a data-toggle="modal" data-target="#deleteProduct"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                    @item.ordersdetails.ToArray()[0].amount
+                                </td>
+                                <td @col>@item.totalSum VNĐ</td>
+                                <td @col>
+                                    @if (item.status == 0)
+                                    {
+                                        <div class="label-main">
+                                            <label class="label bg-danger">Chưa giao hàng</label>
+                                        </div>
+                                    }
+                                    else if (item.status == 1)
+                                    {
+                                        <div class="label-main">
+                                            <label class="label bg-success">Đã giao hàng</label>
+                                        </div>
+                                    }
+                                </td>
+                                <td @col>@item.update_at</td>
+                                <td @col>
+                                    @if (item.status == 0)
+                                    {
+                                        <a data-toggle="modal" onclick="window.location.href = '/Admin/Order/ChangeStatus?id=@item.Id'" class="text-danger"><i class="fa fa-close">&nbsp;</i>Tình trạng</a>
+                                    }
+                                    else if(item.status == 1)
+                                    {
+                                        <a data-toggle="modal" onclick="window.location.href = '/Admin/Order/ChangeStatus?id=@item.Id'" class="text-success"><i class="fa fa-check-circle">&nbsp;</i>Tình trạng</a>
+                                    }
+                                    <a data-toggle="modal" class="text-danger" data-target="#deleteOrder-@item.Id"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
                                 </td>
                             </tr>
+                            i++;
+                            for (int index = 1; index < item.ordersdetails.Count; index++)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.ordersdetails.ToArray()[index].Product.name
+                                    </td>
+                                    <td>
+                                        @item.ordersdetails.ToArray()[0].quantity
+                                    </td>
+                                    <td>
+                                        @item.ordersdetails.ToArray()[0].amount
+                                    </td>
+                                </tr>
+                            }
                         }
                     </tbody>
                 </table>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
-                    <div class="btn-group mr-2" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-success">1</button>
-                        <button type="button" class="btn btn-success">2</button>
-                        <button type="button" class="btn btn-success">3</button>
-                        <button type="button" class="btn btn-success">4</button>
-                    </div>
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </div>
             </div>
-            <!--Thêm đơn hàng-->
-            <div class="modal fade" id="addOrder" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" style="max-width: 1060px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thêm đơn hàng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Ảnh sản phẩm</label>
-                                <input type="file" class="form-control" name="Image">
+
+            @foreach (var item in Model)
+            {
+                <!--Xóa đơn hàng-->
+                <div class="modal fade" id="deleteOrder-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xóa đơn hàng - Bàn phím đẹp và chất lượng</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mã đơn hàng</label>
-                                <input type="text" class="form-control" name="Code" placeholder="Vui lòng nhập mã đơn hàng">
+                            <div class="modal-body">
+                                Bạn có chắc muốn xóa đơn hàng này??
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tên đơn hàng</label>
-                                <input type="text" class="form-control" name="Name" placeholder="Vui lòng nhập tên đơn hàng">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                                <button type="button" onclick="window.location.href = '/Admin/Order/Delete?id=@item.Id'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tổng tiền</label>
-                                <input name="Price" type="text" class="form-control" placeholder="Vui lòng nhập giá tiền">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mô tả</label>
-                                <textarea class="form-control" name="Describe" rows="4"></textarea>
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Chưa giao hàng
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Đã giao hàng
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--Sửa đơn hàng-->
-            <div class="modal fade" id="editProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" style="max-width: 1060px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sửa đơn hàng - Bàn phím đẹp và chất lượng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Hình ảnh</label>
-                                <input type="file" class="form-control" name="Image">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mã đơn hàng</label>
-                                <input type="text" class="form-control" name="Code" value="DH-122" placeholder="Vui lòng nhập mã đơn hàng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tên đơn hàng</label>
-                                <input type="text" value="Bàn phím đẹp và chất lượng" class="form-control" name="Name" placeholder="Vui lòng nhập tên đơn hàng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Loại đơn hàng</label>
-                                <select class="form-control" name="Category">
-                                    <option>Thiết bị máy tính</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Giá tiền</label>
-                                <input name="Price" value="3.800.000" type="text" class="form-control" placeholder="Vui lòng nhập giá tiền">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mô tả</label>
-                                <textarea class="form-control" name="Describe" rows="4">Đồ chất lượng</textarea>
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Chưa giao hàng
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Đã giao hàng
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Xóa đơn hàng-->
-            <div class="modal fade" id="deleteProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Xóa đơn hàng - Bàn phím đẹp và chất lượng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Bạn có chắc muốn xóa đơn hàng này??
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>
