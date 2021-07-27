@@ -1,10 +1,10 @@
 ﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.ProductIndex
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Product";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="row align-flex-start">
-    <div class="col-25 border-debug filter-list">
+    <!--<div class="col-25 border-debug filter-list">-->
         @*        <div class="">
             <label class="switch">
                 <input type="checkbox">
@@ -18,7 +18,7 @@
             </ul>
         </div>*@
 
-        <label for="cars">Product:</label>
+        <!--<label for="cars">Product:</label>
         <select name="keyboard" id="keyboard">
             <optgroup label="keyboard">
                 <option value="basic">Basic keybroad</option>
@@ -59,10 +59,10 @@
             <optgroup label="other...">
             </optgroup>
         </select>
-    </div>
+    </div>-->
 
 
-    <div class="col-70 border-debug">
+    <div class="col-1 background-white">
 
         @Html.Partial("_SliderPartial", Model.sliders)
 

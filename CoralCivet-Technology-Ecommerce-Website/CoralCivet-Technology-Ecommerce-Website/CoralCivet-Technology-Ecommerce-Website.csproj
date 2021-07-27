@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -120,12 +126,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -188,6 +188,7 @@
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
     <Compile Include="Areas\Admin\Controllers\ViewAdminController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -6123,30 +6124,46 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Image\find.svg" />
-    <Content Include="Content\Image\KeychronK2_1.jpg" />
-    <Content Include="Content\Image\KeychronK2_2.jpg" />
-    <Content Include="Content\Image\KeychronK2_3.jpg" />
-    <Content Include="Content\Image\KeychronK4_1.jpg" />
-    <Content Include="Content\Image\KeychronK4_2.jpg" />
-    <Content Include="Content\Image\KeychronK4_3.jpg" />
-    <Content Include="Content\Image\KeychronK6_1.jpg" />
-    <Content Include="Content\Image\KeychronK6_2.jpg" />
-    <Content Include="Content\Image\KeychronK6_3.jpg" />
-    <Content Include="Content\Image\KeychronK8_1.jpg" />
-    <Content Include="Content\Image\KeychronK8_2.jpg" />
-    <Content Include="Content\Image\KeychronK8_3.jpg" />
-    <Content Include="Content\Image\KeychrronK2.jpg" />
-    <Content Include="Content\Image\KeychrronK4.jpg" />
-    <Content Include="Content\Image\KeychrronK6.jpg" />
-    <Content Include="Content\Image\KeychrronK8.jpg" />
-    <Content Include="Content\Image\Lofree_mint.jpg" />
-    <Content Include="Content\Image\Lofree_red.jpg" />
-    <Content Include="Content\Image\Lofree_white.jpg" />
-    <Content Include="Content\Image\Lofree_white_1.jpg" />
+    <Content Include="Content\Image\Category\Keyboard.jpg" />
+    <Content Include="Content\Image\Product\KeychronK2_1.jpg" />
+    <Content Include="Content\Image\Product\KeychronK2_2.jpg" />
+    <Content Include="Content\Image\Product\KeychronK2_3.jpg" />
+    <Content Include="Content\Image\Product\KeychronK4_1.jpg" />
+    <Content Include="Content\Image\Product\KeychronK4_2.jpg" />
+    <Content Include="Content\Image\Product\KeychronK4_3.jpg" />
+    <Content Include="Content\Image\Product\KeychronK6_1.jpg" />
+    <Content Include="Content\Image\Product\KeychronK6_2.jpg" />
+    <Content Include="Content\Image\Product\KeychronK6_3.jpg" />
+    <Content Include="Content\Image\Product\KeychronK8_1.jpg" />
+    <Content Include="Content\Image\Product\KeychronK8_2.jpg" />
+    <Content Include="Content\Image\Product\KeychronK8_3.jpg" />
+    <Content Include="Content\Image\Product\KeychronK2.jpg" />
+    <Content Include="Content\Image\Product\KeychronK4.jpg" />
+    <Content Include="Content\Image\Product\KeychronK6.jpg" />
+    <Content Include="Content\Image\Product\KeychronK8.jpg" />
+    <Content Include="Content\Image\Product\Lofree_BDuck.jpg" />
+    <Content Include="Content\Image\Product\Lofree_BDuck_1.jpg" />
+    <Content Include="Content\Image\Product\Lofree_BDuck_2.jpg" />
+    <Content Include="Content\Image\Product\Lofree_BDuck_3.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Classic.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Classic_1.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Classic_2.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Classic_3.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Maus.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Maus_1.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Maus_2.jpg" />
+    <Content Include="Content\Image\Product\Lofree_Maus_3.jpg" />
+    <Content Include="Content\Image\Product\Lofree_mint.jpg" />
+    <Content Include="Content\Image\Product\Lofree_red.jpg" />
+    <Content Include="Content\Image\Product\Lofree_white.jpg" />
+    <Content Include="Content\Image\Product\Lofree_white_1.jpg" />
     <Content Include="Content\Image\logo.svg" />
-    <Content Include="Content\Image\slider1.png" />
-    <Content Include="Content\Image\slider2.png" />
-    <Content Include="Content\Image\slider3.png" />
+    <Content Include="Content\Image\Category\Mouse.jpg" />
+    <Content Include="Content\Image\Category\Other.jpg" />
+    <Content Include="Content\Image\Banner\slider_KeychronK3.jpg" />
+    <Content Include="Content\Image\Banner\slider_keychronK4.jpg" />
+    <Content Include="Content\Image\Banner\slider_Lofree1.jpg" />
+    <Content Include="Content\Image\Banner\slider_LofreeWanderfree.jpg" />
     <Content Include="Content\Image\test1.png" />
     <Content Include="Content\Image\test2.png" />
     <Content Include="Content\PagedList.css" />
@@ -6154,18 +6171,14 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Images\Banner\55075fd97456a9ca1339d94f1ceacd27.jpg" />
-    <Content Include="Images\Banner\banner.jpg" />
-    <Content Include="Images\Category\15629035958661416261.jpg" />
-    <Content Include="Images\Category\Linhkien.jpg" />
-    <Content Include="Images\Post\2010_goc-gaming-dep79.jpg" />
-    <Content Include="Images\Post\55075fd97456a9ca1339d94f1ceacd27.jpg" />
-    <Content Include="Images\Product\15629035958661416261.jpg" />
-    <Content Include="Images\Product\55075fd97456a9ca1339d94f1ceacd27.jpg" />
-    <Content Include="Images\Topic\15629035958661416261.jpg" />
-    <Content Include="Images\Topic\ban-phim-laptop-bi-loi.jpg" />
-    <Content Include="Images\User\15629035958661416261.jpg" />
-    <Content Include="Images\User\unnamed.png" />
+    <Content Include="Content\Image\Banner\banner.jpg" />
+    <Content Include="Content\Image\Category\15629035958661416261.jpg" />
+    <Content Include="Content\Image\Category\Linhkien.jpg" />
+    <Content Include="Content\Image\Post\2010_goc-gaming-dep79.jpg" />
+    <Content Include="Content\Image\Topic\15629035958661416261.jpg" />
+    <Content Include="Content\Image\Topic\ban-phim-laptop-bi-loi.jpg" />
+    <Content Include="Content\Image\User\15629035958661416261.jpg" />
+    <Content Include="Content\Image\User\unnamed.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\admin\css\style.css.map" />
@@ -6821,6 +6834,9 @@
     <Content Include="Views\Shared\_SliderPartial.cshtml" />
     <Content Include="Views\Shared\_HeaderCategory.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Shared\_HeaderBands.cshtml" />
+    <Content Include="Views\Shared\_ProductImgSliderPartial.cshtml" />
+    <Content Include="Views\Brand\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

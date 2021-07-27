@@ -1,0 +1,23 @@
+﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Brand>
+
+@foreach (var item in Model)
+{
+    <div class="col-3 index-item category-item">
+        <a>
+            @if (@item.name == "Keychron")
+            {
+                <img src="~/Content/Image/Product/KeychronK2_1.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+            }
+            else if (@item.name == "Lofree")
+            {
+                <img src="~/Content/Image/Product/Lofree_mint.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+            }
+            else
+            {
+                <img src="~/Content/Image/Category/Other.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+            }
+
+        </a>
+        <h3><b>@item.name</b></h3>
+    </div>
+}

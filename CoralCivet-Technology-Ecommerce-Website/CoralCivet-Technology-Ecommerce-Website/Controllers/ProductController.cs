@@ -29,7 +29,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             model.sliders = context.sliders.Where(p => p.status == 1).ToList();
             return View(model);
         }
-
+        
         public ActionResult Detail(Product product)
         {
             ProductDetail model = new ProductDetail();
