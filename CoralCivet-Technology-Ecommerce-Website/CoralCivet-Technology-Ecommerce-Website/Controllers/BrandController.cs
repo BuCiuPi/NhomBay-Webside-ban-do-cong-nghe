@@ -12,21 +12,17 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
     {
         // GET: Brand
         CoralCivetContext context = new CoralCivetContext();
-        public ActionResult Index(int Id)
+        public ActionResult Index(int? Id)
         {
-            ProductIndex model = new ProductIndex();
-            model.products = new List<Product>();
-            int count = 4;
-            foreach (var item in context.Products.Where(p=>p.brandId == Id).ToList())
+            BrandIndex model = new BrandIndex();
+            if (Id==null)
             {
-                if (count != 0)
-                {
-                    model.products.Add(item);
-                    count--;
-                }
+                model.brands = context.Brands.ToList();
             }
-
-            model.sliders = context.sliders.Where(p => p.status == 1).ToList();
+            else
+            {
+                model.brands = context.Brands.Where(p=>p.Id == Id).ToList();
+            }
             return View(model);
         }
 

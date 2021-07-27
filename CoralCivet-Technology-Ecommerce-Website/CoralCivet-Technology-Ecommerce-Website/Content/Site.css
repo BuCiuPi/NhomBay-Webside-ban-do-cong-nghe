@@ -379,11 +379,10 @@ ul {
 /* The dots/bullets/indicators */
 .dot {
     cursor: pointer;
-    margin: 0px 2px;
-    height: 10px;
-    width: 30px;
     background-color: #bbb;
     display: inline-block;
+    max-width: 100px;
+    min-width: 50px;
     transition: background-color 0.6s ease;
 }
 
@@ -751,7 +750,6 @@ input:checked + .slider:before {
         text-decoration: none;
         cursor: pointer;
         padding: 10px;
-        border: 1px solid black;
         margin: 10px auto;
     }
 
@@ -788,10 +786,17 @@ input:checked + .slider:before {
     padding: 10px;
     z-index: 10;
     border-radius: 10px 0px 10px 5px;
+    text-align: center;
+    cursor: pointer;
 }
 .floating-cart img{
     width: 20px;
 }
+
+    .floating-cart p{
+        margin: auto;
+        margin-top: 5px;
+    }
 
 .animation-1 {
     transform: translateY(-10px) scale(1.02, 1.02);

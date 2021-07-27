@@ -1,10 +1,14 @@
-﻿@model CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.Product
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
-<a href="@Url.Action("Detail","Product",Model)" >
+@model Product
+
+
     <div class="product">
         <div class="product-img">
-            <img src="@Model.ProductImgs.ElementAt(0).name" class="img-responsive center-block" alt="@Model.ProductImgs.ElementAt(0).name" />
-            <div class="btn-add">
+            <a href="@Url.Action("Detail","Product",Model)">
+                <img src="@Model.ProductImgs.ElementAt(0).name" class="img-responsive center-block" alt="@Model.ProductImgs.ElementAt(0).name" />
+            </a>
+            <div class="btn-add" onclick="location.href='@Url.Action("AddCart", "Cart", new {url = HttpContext.Current.Request.Url.AbsoluteUri, productId = Model.ID,val = 1})'">
                 ADD TO CART
             </div>
             <div class="btn-like">
@@ -14,7 +18,9 @@
         <a href="@Url.Action("Detail","Product",Model)"><b>@Model.Brand.name @Model.name</b></a>
         <p class="product-color">black</p>
         <hr />
-        <h3><b>@Model.price VND</b></h3>
+        <h3><b>@Model.price.ToString("N") VND</b></h3>
     </div>
-</a>
+
+
+<script src="~/Scripts/Cart.js"></script>
 
