@@ -9,6 +9,7 @@ using PagedList;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ProductController : Controller
     {
         private CoralCivetContext db = new CoralCivetContext();

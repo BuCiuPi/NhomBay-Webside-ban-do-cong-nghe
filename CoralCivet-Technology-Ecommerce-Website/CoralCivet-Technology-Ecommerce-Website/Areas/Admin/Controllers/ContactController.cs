@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class ContactController : Controller
     {
         CoralCivetContext db = new CoralCivetContext();

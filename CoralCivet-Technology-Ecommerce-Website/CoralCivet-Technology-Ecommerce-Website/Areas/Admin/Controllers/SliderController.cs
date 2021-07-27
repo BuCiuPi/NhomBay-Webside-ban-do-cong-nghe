@@ -10,6 +10,7 @@ using PagedList;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SliderController : Controller
     {
         private CoralCivetContext db = new CoralCivetContext();
