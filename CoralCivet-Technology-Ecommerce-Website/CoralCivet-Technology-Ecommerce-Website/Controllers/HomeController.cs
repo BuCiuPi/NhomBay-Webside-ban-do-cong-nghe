@@ -52,7 +52,6 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             return View();
         }
 
-        [HttpGet]
         public ActionResult ReturnHeaderCategory()
         {
             return PartialView("_HeaderCategory",context.Types.Where(p => p.parentId == null).ToList());

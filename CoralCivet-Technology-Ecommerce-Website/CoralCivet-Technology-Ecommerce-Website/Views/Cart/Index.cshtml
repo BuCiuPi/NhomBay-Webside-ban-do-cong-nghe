@@ -1,0 +1,61 @@
+﻿@model  CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.CartIndex
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-55 border-debug cart-product">
+        <div class="row">
+            <div class="col-1 cart-title">
+                <p><b>CART</b></p>
+            </div>
+            @foreach (var item in Model.Carts)
+            {
+                <div class="col-1 ">
+                    <hr />
+                    <div class="row cart-product-item">
+                        <div class="col-4 border-debug">
+                            <img src="@item.Product.ProductImgs.ElementAt(0).name" alt="Product.img" />
+                        </div>
+                        <div class="col-2 border-debug">
+                            <h2>@item.Product.Brand.name @item.Product.name</h2>
+                            <h3>Price: @item.Product.price.ToString("N") VND</h3>
+                            <br />
+                            <div class="row">
+                                <div class="col-2">
+                                    Qty: @item.value
+                                </div>
+                                <div class="col-2">
+                                    Color: black
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 border-debug">
+                            <p> VND</p>
+                            <p>available</p>
+                            <button>LIKE</button>
+                            <br />
+                            <br />
+                            <button>DELETE</button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="col-40 border-debug cart-order">
+        <h3>ORDER</h3>
+        <hr />
+        <pre>promo code <input type="text" /></pre>
+        
+        <hr />
+        <p>Order: @Model.total.ToString("N") VND</p>
+        <p>Discount: 0</p>
+        <div class="btn-continue">CONTINUE</div>
+    </div>
+
+</div>
+

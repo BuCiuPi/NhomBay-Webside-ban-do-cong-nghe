@@ -38,7 +38,7 @@
             </div>
 
             <div class="col-1">
-                <h2 style="color: #FA7268;">Price: @Model.products.price </h2>
+                <h2 style="color: #FA7268;">Price: @Model.products.price.ToString("N") </h2>
                 <hr />
             </div>
 
@@ -51,7 +51,7 @@
 
             <div class="col-1 ">
                 <h2>Qty</h2>
-                <div class="row product-detail-button border-debug">
+                <div class="row product-detail-button">
                     <a class="col-55" style="min-width:auto" href="#">Add to cart</a>
 
                     <a class="col-25" style="min-width:auto" href="#">Like</a>

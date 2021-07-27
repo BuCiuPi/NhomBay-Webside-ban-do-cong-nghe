@@ -3,7 +3,7 @@
 @foreach (var item in Model)
 {
     <div class="col-3 index-item category-item">
-        <a>
+        <a href="@Url.Action("Index","Brand",new { Id = item.Id })">
             @if (@item.name == "Keychron")
             {
                 <img src="~/Content/Image/Product/KeychronK2_1.jpg" class="img-responsive center-block" alt="Keybroad.img" />
