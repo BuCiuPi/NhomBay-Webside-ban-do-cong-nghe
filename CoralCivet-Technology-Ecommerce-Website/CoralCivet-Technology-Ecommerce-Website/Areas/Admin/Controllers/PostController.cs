@@ -60,6 +60,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         {
             var post = db.posts.Find(id);
             db.posts.Remove(post);
+            db.SaveChanges();
             TempData["Notification"] = String.Format("Xóa bài viết [{0}] thành công.", post.title);
             return RedirectToAction("Index");
         }

@@ -6323,6 +6323,7 @@
     <Content Include="Content\Image\Banner\slider_LofreeWanderfree.jpg" />
     <Content Include="Content\Image\test1.png" />
     <Content Include="Content\Image\test2.png" />
+    <Content Include="Content\Image\Topic\Khuyenmai.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\semantic.css" />
     <Content Include="Content\semantic.min.css" />
@@ -6333,12 +6334,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Image\Banner\banner.jpg" />
-    <Content Include="Content\Image\Category\15629035958661416261.jpg" />
     <Content Include="Content\Image\Category\Linhkien.jpg" />
-    <Content Include="Content\Image\Topic\15629035958661416261.jpg" />
-    <Content Include="Content\Image\Topic\ban-phim-laptop-bi-loi.jpg" />
-    <Content Include="Content\Image\User\15629035958661416261.jpg" />
     <Content Include="Content\Image\User\unnamed.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
