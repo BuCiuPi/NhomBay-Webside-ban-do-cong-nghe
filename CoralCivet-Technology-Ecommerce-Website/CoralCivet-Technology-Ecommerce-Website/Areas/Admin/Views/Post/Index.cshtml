@@ -90,7 +90,7 @@
                             <tr>
                                 <td>@i</td>
                                 <td>
-                                    <img src="~/Content/Image/Post/@item.img" style="width: 100px; height: 100px" />
+                                    <img src="@item.img" style="width: 100px; height: 100px" />
                                 </td>
                                 <td>@item.metakey</td>
                                 <td>@item.title</td>
@@ -136,8 +136,14 @@
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    <label class="form-control-label">Hình ảnh</label>
-                                    <input type="file" class="form-control" name="imgUpload" required>
+                                    @*@Html.DropDownList("ImageList")*@
+                                    <select name="ImageList" id="ImageList" class="form-control">
+                                        @foreach (var image in ViewBag.ImageList)
+                                        {
+                                            <option value="@image.Value">@image.Text</option>
+                                        }
+                                    </select>
+                                    <img alt="image" id="image" style="width:200px;height:200px;" />
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Mã bài viết</label>
@@ -224,9 +230,24 @@
                                     <input type="hidden" name="img" value="@item.img" />
                                     <input type="hidden" name="created_at" value="@item.created_at" />
                                     <div class="form-group">
-                                        <label class="form-control-label">Hình ảnh</label>
-                                        <input type="file" class="form-control" name="imgUpload">
+                                        @*@Html.DropDownList("ImageList")*@
+                                        <select name="ImageList" id="ImageList-@item.Id" class="form-control">
+                                            @foreach (var image in ViewBag.ImageList)
+                                            {
+                                                <option value="@image.Value" @(item.img == image.Value ? "selected" : "")>@image.Text</option>
+                                            }
+                                        </select>
+                                        <img alt="image" id="image-@item.Id" style="width:200px;height:200px;" />
                                     </div>
+                                    <script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#ImageList-@item.Id").change(function () {
+                                    var imagePath = $("#ImageList-@item.Id").val();
+                                    $("#image-@item.Id").attr('src', imagePath)
+                                });
+                                $("#ImageList-@item.Id").trigger('change');
+                            });
+                                    </script>
                                     <div class="form-group">
                                         <label class="form-control-label">Mã bài viết</label>
                                         <input type="text" value="@item.metakey" class="form-control" name="metakey" placeholder="Vui lòng nhập mã bài viết" required>
@@ -258,11 +279,11 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="form-control-label">Nội dung</label>
-                                        <textarea class="form-control" name="detail" id="editorEdit-@item.Id" rows="4">@item.detail</textarea>
+                                        <textarea class="form-control" name="detail" id="editorEdit" rows="4">@item.detail</textarea>
                                     </div>
                                     <script>
                                         ClassicEditor
-                                            .create(document.querySelector('#editorEdit-@item.Id'))
+                                            .create(document.querySelector('#editorEdit'))
                                             .catch(error => {
                                                 console.error(error);
                                             });
@@ -324,3 +345,12 @@
     }
 </style>
 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ImageList").change(function () {
+            var imagePath = $("#ImageList").val();
+            $("#image").attr('src', imagePath)
+        });
+        $("#ImageList").trigger('change');
+    });
+</script>

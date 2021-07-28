@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
 using PagedList;
+using CoralCivet_Technology_Ecommerce_Website.Models;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
@@ -16,25 +17,25 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult Index(int? page)
         {
+            ImageGallery image = new ImageGallery();
+            ViewBag.ImageList = image.ImageList;
             ViewBag.Count = db.Products.Count();
             return View(db.Products.OrderByDescending(n=>n.created_at).ToPagedList(page ?? 1, 20));
         }
+        //public ViewResult ShowImages()
+        //{
+        //    ImageGallery image = new ImageGallery();
+        //    return View(image);
+        //}
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Product product, HttpPostedFileBase imgUpload, int[] typeID)
+        public ActionResult Create(Product product, int[] typeID, string ImageList)
         {
-            if (imgUpload == null)
+            if (ImageList == null)
             {
                 ViewBag.NotificationError = "Chọn hình ảnh";
                 return RedirectToAction("Index");
-            }
-            else
-            {
-                var fileimg = Path.GetFileName(imgUpload.FileName);
-                //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Content/Image/Product"), fileimg);
-                imgUpload.SaveAs(pa);
             }
             product.created_at = DateTime.Now;
             db.Products.Add(product);
@@ -42,7 +43,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             db.ProductImgs.Add(new ProductImg()
             {
                 Id = ++lastID,
-                name = imgUpload.FileName,
+                name = ImageList,
                 productId = product.ID,
                 type = 1,
             });
@@ -61,16 +62,12 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Product product, HttpPostedFileBase imgUpload, int[] typeID)
+        public ActionResult Edit(Product product, string ImageList, int[] typeID)
         {
-            if (imgUpload != null)
+            if (ImageList != null)
             {
-                var fileimg = Path.GetFileName(imgUpload.FileName);
-                //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Content/Image/Product"), fileimg);
-                imgUpload.SaveAs(pa);
                 var productimg = db.ProductImgs.FirstOrDefault(x => x.productId == product.ID);
-                productimg.name = imgUpload.FileName;
+                productimg.name = ImageList;
             }
             // xoa type id ko co
             var productDetail = db.TypeDetails.Where(x => x.ProductId == product.ID);

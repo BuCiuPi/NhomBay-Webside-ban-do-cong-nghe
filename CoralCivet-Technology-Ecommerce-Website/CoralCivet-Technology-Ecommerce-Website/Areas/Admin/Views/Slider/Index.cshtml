@@ -88,7 +88,7 @@
                             <tr>
                                 <td>@i</td>
                                 <td>
-                                    <img src="~/Content/Image/Banner/@item.img" style="width: 200px; height: 100px" />
+                                    <img src="@item.img" style="width: 200px; height: 100px" />
                                 </td>
                                 <td>@item.name</td>
                                 <td>@item.orders</td>
@@ -134,8 +134,14 @@
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                 <div class="form-group">
-                                    <label class="form-control-label">Ảnh bìa</label>
-                                    <input type="file" class="form-control" name="imgUpload">
+                                    @*@Html.DropDownList("ImageList")*@
+                                    <select name="ImageList" id="ImageList" class="form-control">
+                                        @foreach (var image in ViewBag.ImageList)
+                                        {
+                                            <option value="@image.Value">@image.Text</option>
+                                        }
+                                    </select>
+                                    <img alt="image" id="image" style="width:200px;height:200px;" />
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label">Tên ảnh bìa</label>
@@ -196,9 +202,24 @@
                         <input type="hidden" name="ID" value="@item.ID" />
                         <input type="hidden" name="img" value="@item.img" />
                         <div class="form-group">
-                            <label class="form-control-label">Ảnh bìa</label>
-                            <input type="file" class="form-control" name="imgUpload">
+                            @*@Html.DropDownList("ImageList")*@
+                            <select name="ImageList" id="ImageList-@item.ID" class="form-control">
+                                @foreach (var image in ViewBag.ImageList)
+                                {
+                                    <option value="@image.Value" @(item.img == image.Value ? "selected" : "")>@image.Text</option>
+                                }
+                            </select>
+                            <img alt="image" id="image-@item.ID" style="width:200px;height:200px;" />
                         </div>
+                        <script type="text/javascript">
+                            $(document).ready(function () {
+                                $("#ImageList-@item.ID").change(function () {
+                                    var imagePath = $("#ImageList-@item.ID").val();
+                                    $("#image-@item.ID").attr('src', imagePath)
+                                });
+                                $("#ImageList-@item.ID").trigger('change');
+                            });
+                        </script>
                         <div class="form-group">
                             <label class="form-control-label">Tên ảnh bìa</label>
                             <input type="text" class="form-control" value="@item.name" name="name" placeholder="Vui lòng nhập tên ảnh bìa">
@@ -256,3 +277,12 @@
         </div>
     </div>
 }
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ImageList").change(function () {
+            var imagePath = $("#ImageList").val();
+            $("#image").attr('src', imagePath)
+        });
+        $("#ImageList").trigger('change');
+    });
+</script>
