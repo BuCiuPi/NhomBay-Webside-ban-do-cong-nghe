@@ -21,7 +21,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             }
             else
             {
-                model.brands = context.Brands.Where(p=>p.Id == Id).ToList();
+                model.brands = context.Brands.Where(p=>p.Id == Id ).ToList();
             }
             return View(model);
         }

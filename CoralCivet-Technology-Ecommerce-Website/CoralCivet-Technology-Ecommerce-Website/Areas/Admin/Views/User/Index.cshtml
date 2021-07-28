@@ -1,7 +1,11 @@
 ﻿
+@using Microsoft.AspNet.Identity
+@using CoralCivet_Technology_Ecommerce_Website.Models
 @{
+
     ViewBag.Title = "Quản lý người dùng";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    ApplicationDbContext db = new ApplicationDbContext();
 }
 <br />
 <div class="card">
@@ -59,14 +63,7 @@
 <div class="card">
     <div class="card-block">
         <div class="row">
-            <div class="col-lg-6">
-                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addUser">
-                    <i class="fas fa-plus-circle">&nbsp;</i> THÊM người dùng
-                </button>
-                <button type="button" class="btn btn-outline-danger waves-effect waves-light">
-                    <i class="fas fa-trash">&nbsp;</i> THÙNG RÁC
-                </button>
-            </div>
+
             <br />
             <br />
             <div class="col-sm-12 table-responsive">
@@ -84,29 +81,44 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @for (var i = 1; i < 10; i++)
-                        {
-                            <tr>
-                                <td>@i</td>
-                                <td>
-                                    <img src="~/Images/User/unnamed.png" style="width: 100px; height: 100px" />
-                                </td>
-                                <td>nguyenva</td>
-                                <td>nguyen van a</td>
-                                <td>nguyenva@gmail.com</td>
-                                <td>0123456789</td>
-                                <td>
-                                    <div class="label-main">
-                                        <label class="label bg-success">Đang hoạt động</label>
-                                    </div>
-                                </td>
-                                <td>09/07/2021</td>
-                                <td>
-                                    <a data-toggle="modal" data-target="#editUser"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
-                                    <a data-toggle="modal" data-target="#deleteUser"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
-                                </td>
-                            </tr>
+
+                        @{
+                            int count = 1;
+                            foreach (var item in db.Users.ToList())
+                            {
+
+                                <tr>
+                                    <td>@count</td>
+                                    <td>
+                                        <img src="~/Images/User/unnamed.png" style="width: 100px; height: 100px" />
+                                    </td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Name</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.PhoneNumber</td>
+                                    <td>
+                                        @if (item.Status == 1)
+                                        {
+                                            <div class="label-main">
+                                                <label class="label bg-success">Đang hoạt động</label>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="label-main">
+                                                <label class="label bg-danger">Ngừng hoạt động</label>
+                                            </div>
+                                        }
+                                    </td>
+                                    <td>@item.Update_at.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <a data-toggle="modal" data-target="#editUser-@item.Id"><i class="fa fa-edit">&nbsp;</i>Sửa</a> |
+                                        <a data-toggle="modal" data-target="#deleteUser-@item.Id"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                    </td>
+                                </tr>
+                            }
                         }
+
                     </tbody>
                 </table>
                 <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
@@ -118,142 +130,88 @@
                     </div>
                 </div>
             </div>
-            <!--Thêm người dùng-->
-            <div class="modal fade" id="addUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" style="max-width: 1060px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Thêm người dùng</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Hình ảnh</label>
-                                <input type="file" class="form-control" name="Image">
+            @foreach (var item in db.Users.ToList())
+            {
+                <!--Sửa người dùng-->
+                <div class="modal fade" id="editUser-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" style="max-width: 1060px;">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Sửa người dùng - @item.Name - @item.UserName</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tài khoản</label>
-                                <input type="text" class="form-control" name="UserName" placeholder="Vui lòng nhập tài khoản">
+                            <div class="modal-body">
+                                <form action="@Url.Action("Edit","User")" method="post" enctype="multipart/form-data">
+                                    @Html.AntiForgeryToken()
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <input type="hidden" name="Id" value="@item.Id" />
+                                    <input type="hidden" name="Update_at" value="@DateTime.Now" />
+                                    <input type="hidden" name="Update_by" value="@User.Identity.GetUserId()" />
+
+                                    <div class="form-group">
+                                        <label class="form-control-label">Hình ảnh</label>
+                                        <input type="file" class="form-control" name="Image">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Họ tên</label>
+                                        <input type="text" class="form-control" value="@item.Name" name="Name" placeholder="Vui lòng nhập tên người dùng">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Email</label>
+                                        <input type="email" class="form-control" value="@item.Email" name="Email" placeholder="Vui lòng nhập email người dùng">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-control-label">Số điện thoại</label>
+                                        <input type="text" class="form-control" value="@item.PhoneNumber" name="PhoneNumber" placeholder="Vui lòng nhập số điện thoại người dùng">
+                                    </div>
+                                    <fieldset class="form-group">
+                                        <label class="form-control-label">Tình trạng</label>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="Status" valu="true" @(item.Status == 1 ? "checked" : "")>
+                                                Hoạt động
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <label class="form-check-label">
+                                                <input type="radio" class="form-check-input" name="Status" value="false" @(item.Status != 1 ? "checked" : "")>
+                                                Không hoạt động
+                                            </label>
+                                        </div>
+                                    </fieldset>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                                        <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Họ tên</label>
-                                <input type="text" class="form-control" name="FullName" placeholder="Vui lòng nhập tên người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Email</label>
-                                <input type="email" class="form-control" name="Email" placeholder="Vui lòng nhập email người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Số điện thoại</label>
-                                <input type="text" class="form-control" name="Email" placeholder="Vui lòng nhập số điện thoại người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Mật khẩu</label>
-                                <input type="password" class="form-control" name="Password" placeholder="Vui lòng nhập mật khẩu người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Xác nhận mật khẩu</label>
-                                <input type="password" class="form-control" name="RePassword" placeholder="Vui lòng xác nhận mật khẩu người dùng">
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Hoạt động
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Không hoạt động
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--Sửa người dùng-->
-            <div class="modal fade" id="editUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" style="max-width: 1060px;">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Sửa người dùng - nguyenva@gmail.com</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label class="form-control-label">Hình ảnh</label>
-                                <input type="file" class="form-control" name="Image">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Tài khoản</label>
-                                <input type="text" class="form-control" value="nguyenva" name="UserName" placeholder="Vui lòng nhập tài khoản">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Họ tên</label>
-                                <input type="text" class="form-control" value="nguyen van a" name="FullName" placeholder="Vui lòng nhập tên người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Email</label>
-                                <input type="email" class="form-control" value="nguyenva@gmail.com" name="Email" placeholder="Vui lòng nhập email người dùng">
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">Số điện thoại</label>
-                                <input type="text" class="form-control" value="0123456789" name="Phone" placeholder="Vui lòng nhập số điện thoại người dùng">
-                            </div>
-                            <fieldset class="form-group">
-                                <label class="form-control-label">Tình trạng</label>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" valu="true" checked>
-                                        Hoạt động
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <label class="form-check-label">
-                                        <input type="radio" class="form-check-input" name="Active" value="false">
-                                        Không hoạt động
-                                    </label>
-                                </div>
-                            </fieldset>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!--Xóa người dùng-->
-            <div class="modal fade" id="deleteUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Xóa người dùng - nguyenva@gmail.com</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            Bạn có chắc muốn xóa người dùng này??
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
-                            <button type="button" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                <!--Xóa người dùng-->
+                <div class="modal fade" id="deleteUser-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Xóa người dùng - nguyenva@gmail.com</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Bạn có chắc muốn xóa người dùng này??
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                                <button type="button" onclick="location.href='/Admin/User/Delete?id=@item.Id'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            }
+
         </div>
     </div>
 </div>

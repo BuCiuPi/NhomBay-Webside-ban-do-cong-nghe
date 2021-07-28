@@ -8,9 +8,13 @@
     <div class="row">
         @foreach (var product in item.Products)
         {
-        <div class="col-5">
-            @Html.Partial("_ProductPartial", product)
-        </div>
+            if (product.status == 1)
+            {
+                <div class="col-5">
+                    @Html.Partial("_ProductPartial", product)
+                </div>
+            }
+
         }
     </div>
 
