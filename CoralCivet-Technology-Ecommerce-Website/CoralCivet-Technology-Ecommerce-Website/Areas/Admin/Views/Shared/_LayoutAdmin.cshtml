@@ -34,7 +34,11 @@
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/Layout/css/main.css">
     <!-- Responsive.css-->
     <link rel="stylesheet" type="text/css" href="~/Areas/Admin/Content/Layout/css/responsive.css">
-
+    <link href="~/Content/semantic.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/semantic.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
     <link href="~/Content/fontawesome-free-5.15.3-web/css/all.min.css" rel="stylesheet" />
     <script src="~/Content/fontawesome-free-5.15.3-web/js/all.min.js"></script>
 
@@ -54,7 +58,7 @@
         </div>
         <!-- Navbar-->
         <header class="main-header-top hidden-print">
-            <a href="index.html" class="logo" style="width: 400px" >
+            <a href="index.html" class="logo" style="width: 400px">
                 <img src="~/Content/Image/logo.svg" style="width: 50px; height: 50px;float: left" class="img-fluid able-logo" />
                 <span style="float: left">CoralCiviet - TECHNOLORY</span>
             </a>
@@ -85,7 +89,7 @@
                         <li class="dropdown">
                             <a href="#!" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle drop icon-circle drop-image">
                                 <span><img class="img-circle " src="~/Areas/Admin/Content/Layout/images/avatar-1.png" style="width:40px;" alt="User Image"></span>
-                                <span>Nguyễn Văn <b>A</b> <i class=" icofont icofont-simple-down"></i></span>
+                                <span>ADMIN <i class=" icofont icofont-simple-down"></i></span>
 
                             </a>
                             <ul class="dropdown-menu settings-menu">
@@ -105,14 +109,27 @@
                 </div>
             </nav>
         </header>
-        @Html.Action("Menu","ViewAdmin")
+        @Html.Action("Menu", "ViewAdmin")
         <div class="content-wrapper">
             <div class="container-fluid">
                 @RenderBody()
             </div>
         </div>
     </div>
-
+    @if (TempData["Notification"] != null)
+    {
+        <script>
+    $(document).ready(function () {
+        toastr.success('@TempData["Notification"].ToString()', 'Thông báo.', { timeOut: 5000 })
+    })
+        </script>
+    }
+    else if (TempData["NotificationError"] != null)
+    {
+        <script>
+        toastr.error('@TempData["NotificationError"].ToString()', 'Thông báo.', { timeOut: 5000 })
+        </script>
+    }
     <script src="~/Areas/Admin/Content/Layout/plugins/jquery/dist/jquery.min.js"></script>
     <script src="~/Areas/Admin/Content/Layout/plugins/jquery-ui/jquery-ui.min.js"></script>
     <script src="~/Areas/Admin/Content/Layout/plugins/tether/dist/js/tether.min.js"></script>

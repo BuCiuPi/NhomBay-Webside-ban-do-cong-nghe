@@ -9,6 +9,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     [Table("ProductImg")]
     public partial class ProductImg
     {
+
         public int Id { get; set; }
 
         [StringLength(50)]
