@@ -8,6 +8,9 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CustomModels
 {
     public class OrderIndex
     {
-        public List<ordersdetail> orderList { get; set; }
+        public order order { get; set; }
+        public List<ordersdetail> orderDetailList { get; set; }
+        public double total { get; set; }
     }
+
 }

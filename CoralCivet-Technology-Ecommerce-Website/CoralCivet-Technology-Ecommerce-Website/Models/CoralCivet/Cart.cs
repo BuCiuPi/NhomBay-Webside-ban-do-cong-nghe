@@ -20,6 +20,10 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
         public int value { get; set; }
 
+        public bool? IsSelected { get; set; }
+
         public virtual Product Product { get; set; }
+
+        public double amount;
     }
 }

@@ -50,7 +50,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
         public string noteAdmin { get; set; }
 
-        public int? brandId { get; set; }
+        public int brandId { get; set; }
 
         public virtual Brand Brand { get; set; }
 

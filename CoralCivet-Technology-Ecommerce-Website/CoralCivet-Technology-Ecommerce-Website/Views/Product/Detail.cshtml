@@ -50,13 +50,12 @@
             </div>
 
             <div class="col-1 ">
-                <h2>Qty</h2>
                 <div class="row product-detail-button">
-                    <a class="col-55" style="min-width:auto" href="#">Add to cart</a>
+                    <a class="col-55" style="min-width:auto" href="@Url.Action("AddCart", "Cart", new {url = HttpContext.Current.Request.Url.AbsoluteUri, productId = Model.products.ID,val = 1})">Add to cart</a>
 
                     <a class="col-25" style="min-width:auto" href="#">Like</a>
 
-                    <a class="col-95" href="@Url.Action("IndexAProduct","Order", new ordersdetail{productid = Model.products.ID })">BUY NOW</a>
+                    @*<a class="col-95" href="@Url.Action("IndexAProduct","Order", new Cart{productId = Model.products.ID, value = 1 })">BUY NOW</a>*@
                 </div>
                 <hr />
             </div>

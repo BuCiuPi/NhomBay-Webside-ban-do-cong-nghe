@@ -22,6 +22,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductImg> ProductImgs { get; set; }
         public virtual DbSet<slider> sliders { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<topic> topics { get; set; }
         public virtual DbSet<Type> Types { get; set; }
         public virtual DbSet<TypeDetail> TypeDetails { get; set; }
@@ -31,6 +32,11 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
             modelBuilder.Entity<Brand>()
                 .Property(e => e.name)
                 .IsUnicode(false);
+
+            modelBuilder.Entity<Brand>()
+                .HasMany(e => e.Products)
+                .WithRequired(e => e.Brand)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<contact>()
                 .Property(e => e.email)
@@ -69,16 +75,6 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
 
             modelBuilder.Entity<Product>()
                 .HasMany(e => e.ordersdetails)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.ProductImgs)
-                .WithRequired(e => e.Product)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Product>()
-                .HasMany(e => e.TypeDetails)
                 .WithRequired(e => e.Product)
                 .WillCascadeOnDelete(false);
 

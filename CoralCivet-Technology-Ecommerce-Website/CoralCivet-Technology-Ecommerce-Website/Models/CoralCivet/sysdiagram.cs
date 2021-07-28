@@ -6,19 +6,19 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ProductImg")]
-    public partial class ProductImg
+    public partial class sysdiagram
     {
-
-        public int Id { get; set; }
-
-        [StringLength(50)]
+        [Required]
+        [StringLength(128)]
         public string name { get; set; }
 
-        public int? type { get; set; }
+        public int principal_id { get; set; }
 
-        public int productId { get; set; }
+        [Key]
+        public int diagram_id { get; set; }
 
-        public virtual Product Product { get; set; }
+        public int? version { get; set; }
+
+        public byte[] definition { get; set; }
     }
 }

@@ -25,6 +25,10 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             model.Carts = context.Carts.Where(p=> p.userId == userId).ToList();
             foreach (var item in model.Carts)
             {
+                item.amount = item.Product.price*item.value;
+            }
+            foreach (var item in model.Carts)
+            {
                 model.total += (item.value*item.Product.price);
             }
             
@@ -51,11 +55,20 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             
             cart.productId = productId;
             cart.userId = User.Identity.GetUserId();
+            cart.IsSelected = false;
 
             var updb = context.Carts.Where(p => p.userId == cart.userId && p.productId == productId).FirstOrDefault();
             if (updb!=null)
             {
-                cart.value = val + updb.value;
+                if (updb.value > 0 ||  val > 0)
+                {
+                    cart.value = val + updb.value;
+                }
+                else
+                {
+                    cart.value = updb.value;
+                }
+                
             }
             else
             {
@@ -65,6 +78,37 @@ namespace CoralCivet_Technology_Ecommerce_Website.Controllers
             context.Carts.AddOrUpdate(cart);
             context.SaveChanges();
             return Redirect(url);
+        }
+
+
+        public ActionResult DelCart(int productId)
+        {
+            Cart cart = new Cart();
+
+            cart.productId = productId;
+            cart.userId = User.Identity.GetUserId();
+
+            var updb = context.Carts.FirstOrDefault(p => p.userId == cart.userId && p.productId == productId);
+            if (updb!=null)
+            {
+                context.Carts.Remove(updb);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index","Cart");
+        }
+
+        public ActionResult SetSelected(int productId,bool value)
+        {
+            var userID = User.Identity.GetUserId();
+
+            var db = context.Carts.First(p=>p.productId == productId && p.userId == userID);
+            if (db!=null)
+            {
+                db.IsSelected = value;
+                context.Carts.AddOrUpdate(db);
+                context.SaveChanges();
+            }
+            return RedirectToAction("Index", "Cart");
         }
     }
 }
