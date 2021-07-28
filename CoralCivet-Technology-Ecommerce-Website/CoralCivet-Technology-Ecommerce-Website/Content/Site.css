@@ -201,6 +201,7 @@ textarea {
     flex-wrap: wrap;
     margin: auto;
     justify-content: space-around;
+    align-items:stretch;
 }
 
 .footer-container {
@@ -588,7 +589,7 @@ ul {
 }
 
 .cart-product {
-    border: 1px solid white;
+    border: 3px solid white;
     border-radius: 5px;
 }
 
@@ -606,6 +607,14 @@ ul {
     align-items: stretch;
     
 }
+    .cart-product-item .selected-product {
+        padding: 10px 9px;
+    }
+        .cart-product-item .selected-product span{
+            
+            padding: 1px 4px;
+            cursor: pointer;
+        }
 
 .cart-title {
     background-color: white;
@@ -639,6 +648,28 @@ ul {
 .btn-continue b{
     margin: 10px 0px;
 }
+
+.cart-product-item{
+}
+    .cart-product-item .btn-cart {
+        left: 0;
+        right: 0;
+        text-align: center;
+        background-color: #FA7268;
+        padding: 5px;
+        margin: 10px 0px;
+        color: white;
+        align-self: flex-end;
+        cursor: pointer;
+    }
+
+        .cart-product-item .btn-cart:hover {
+            background-color: #a72246;
+        }
+
+        .cart-product-item .btn-cart:active {
+            background-color: #FA7268;
+        }
 /*end body*/
 /*-----------------------------------------------------------------------*/
 .col-25 {
@@ -661,13 +692,11 @@ ul {
 
 .col-55 {
     flex-basis: 55%;
-    min-width: 300px;
     justify-content: center;
 }
 
 .col-40 {
     flex-basis: 40%;
-    min-width: 200px;
     justify-content: center;
 }
 
@@ -838,5 +867,65 @@ input:checked + .slider:before {
 .background-white {
     background-color: #f6f6f6;
 }
+
+.order-product {
+
+}
+
+    .order-product p{
+        margin-left: 10px;
+    }
+.back-white {
+    background-color: white;
+}
+
+.back-coral {
+    background-color: #FA7268;
+}
+
+.color-white {
+    color: white;
+    border: 2px solid white;
+    border-radius: 2px;
+    background-color: rgb(0 0 0 / 0.20);
+}
+
+.color-coral {
+    color: rgb(0 0 0 / 0);
+    border: 2px solid #FA7268;
+    border-radius: 2px;
+    background-color: rgb(0 0 0 / 0.20);
+}
+
+.order-delivery-inf {
+    margin: 20px;
+}
+.order-delivery-inf radio-form b{
+    margin: 0px 10px;
+}
+
+.btn-submit {
+    left: 0 ;
+    right: 0;
+    text-align: center;
+
+}
+    .btn-submit input[type=submit] {
+        margin-top: 20px;
+        background-color: #FA7268;
+        border: none;
+        color: white;
+        width: 100%;
+        padding: 16px 32px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .btn-submit:hover input[type=submit] {
+        background-color: #a72246;
+    }
+
+    .btn-submit:active input[type=submit] {
+        background-color: #FA7268;
+    }
 /*---------------------------------------------------------------*/
 

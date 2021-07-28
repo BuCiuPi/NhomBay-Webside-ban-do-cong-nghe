@@ -10,7 +10,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CustomModels
     {
         public order order { get; set; }
         public List<ordersdetail> orderDetailList { get; set; }
-        public float total { get; set; }
+        public double total { get; set; }
     }
 
 }

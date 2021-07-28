@@ -27,28 +27,3 @@ function showSlides(n) {
     dots[slideIndex - 1].className += " active";
 }
 
-function GetQty() {
-    var qty = document.getElementById("product-Qty").value;
-    return qty;
-}
-
-function AddCart(id) {
-    var url = '/Order/IndexAProduct/';
-    $.ajax({
-        type: "GET",
-        url: url,
-        data: { productId = id.value, value = GetQty()},
-        dataType: "html"
-    });
-}
-
-document.getElementById("order_transport_type").onclick = function () { changeFee(document.getElementById("order_transport_type").value) }
-
-function changeFee(e) {
-    if (e == 0) {
-        document.getElementById("delivery-fee").innerHTML = "25,000"
-    }
-    if (e == 1) {
-        document.getElementById("delivery-fee").innerHTML = "30,000"
-    }
-}

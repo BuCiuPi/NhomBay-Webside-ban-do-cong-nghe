@@ -220,6 +220,7 @@
     <Compile Include="Models\CoralCivet\Product.cs" />
     <Compile Include="Models\CoralCivet\ProductImg.cs" />
     <Compile Include="Models\CoralCivet\slider.cs" />
+    <Compile Include="Models\CoralCivet\sysdiagram.cs" />
     <Compile Include="Models\CoralCivet\topic.cs" />
     <Compile Include="Models\CoralCivet\Type.cs" />
     <Compile Include="Models\CoralCivet\TypeDetail.cs" />
@@ -6853,7 +6854,7 @@
     <Content Include="Views\Shared\_BrandPartial.cshtml" />
     <Content Include="Views\Product\NewProduct.cshtml" />
     <Content Include="Views\Shared\_FloatCartPartial.cshtml" />
-    <Content Include="Views\Order\View.cshtml" />
+    <Content Include="Views\Order\Done.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

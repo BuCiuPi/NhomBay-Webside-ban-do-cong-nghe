@@ -1,10 +1,12 @@
-﻿@model  CoralCivet_Technology_Ecommerce_Website.Models.CustomModels.CartIndex
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CustomModels
+
+@model  CartIndex
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="row">
+<div class="row" style="align-items:flex-start;">
     <div class="col-55 cart-product">
         <div class="row">
             <div class="col-1 cart-title">
@@ -21,29 +23,54 @@
                     <div class="col-1 ">
                         <hr />
                         <div class="row cart-product-item">
-                            <div class="col-4 border-debug">
+                            @if (item.IsSelected == false)
+                            {
+                                <div class="col-1 selected-product back-white ">
+                                    <span onclick="location.href='@Url.Action("SetSelected","Cart",new { productId = item.productId, value =  true})'" class="color-coral">&#10003;</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="col-1 selected-product back-coral ">
+                                    <span onclick="location.href='@Url.Action("SetSelected","Cart",new { productId = item.productId, value =  false})'" class="color-white">&#10003;</span>
+                                </div>
+                            }
+
+                            <div class="col-4">
                                 <img src="@item.Product.ProductImgs.ElementAt(0).name" alt="Product.img" />
                             </div>
-                            <div class="col-2 border-debug">
-                                <h2>@item.Product.Brand.name @item.Product.name</h2>
-                                <h3>Price: @item.Product.price.ToString("N") VND</h3>
+                            <div class="col-2">
+                                <h3 style="margin: 2px ;"><b>@item.Product.Brand.name @item.Product.name</b></h3>
+                                <hr style="margin: 5px ; " />
+                                <h4 style="margin: 2px ;"><b>Price:</b> @item.Product.price.ToString("N") VND</h4>
                                 <br />
                                 <div class="row">
-                                    <div class="col-2">
-                                        Qty: @item.value
-                                    </div>
-                                    <div class="col-2">
-                                        Color: black
+                                    <div class="col-1">
+                                        <h4>
+                                            <b>Qty:</b>
+                                            <button onclick="location.href='@Url.Action("AddCart", "Cart", new {url = HttpContext.Current.Request.Url.AbsoluteUri, productId = item.productId,val = -1})'">-</button>
+                                            @item.value
+                                            <button onclick="location.href='@Url.Action("AddCart", "Cart", new {url = HttpContext.Current.Request.Url.AbsoluteUri, productId = item.productId,val = 1})'">+</button>
+
+                                        </h4>
+
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-4 border-debug">
-                                <p> VND</p>
-                                <p>available</p>
-                                <button>LIKE</button>
-                                <br />
-                                <br />
-                                <div class="btn-cart-del" onclick="location.href='@Url.Action("DelCart","Cart", new { productId = item.productId })'">DELETE</div>
+                            <div class="col-4">
+                                <p>@item.amount.ToString("N") VND</p>
+                                <p>
+                                    <b>Status:</b> @if (item.Product.status == 0)
+                                    {
+                                        <abbr style="color:red">Stop selling</abbr>
+                                    }
+                                    else
+                                    {
+                                        <abbr style="color:green">Avaiable</abbr>
+                                    }
+                                </p>
+                                <div class="btn-cart">LIKE</div>
+                                <div class="btn-cart" onclick="location.href='@Url.Action("DelCart","Cart", new { productId = item.productId })'">DELETE</div>
                             </div>
                         </div>
 
@@ -58,16 +85,17 @@
         <h3><b>ORDER</b></h3>
         <hr />
         <pre>promo code <input type="text" /></pre>
-        
         <hr />
         <h4><b>Order:</b> @Model.total.ToString("N") VND</h4>
         <h5><b>Discount:</b> 0</h5>
+
+
         <div class="btn-continue col-1 " onclick="location.href='@Url.Action("Index","Order")'">
-            <h4>
+            <h4 style="align-self: flex-end">
                 <b>CONTINUE</b>
             </h4>
         </div>
+
     </div>
 
 </div>
-

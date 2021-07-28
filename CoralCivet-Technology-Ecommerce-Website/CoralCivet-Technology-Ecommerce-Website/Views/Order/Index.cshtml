@@ -3,43 +3,40 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using (Html.BeginForm("Index", "Order", FormMethod.Post))
+@using (Html.BeginForm())
 {
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="row">
+    <div class="row" style="align-items: flex-start;">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="col-55 border-debug cart-product">
+        <div class="col-55 cart-product">
             <div class="row">
+                @Html.HiddenFor(model => model.total, Model.total)
                 <div class="col-1 cart-title">
                     <p><b>DELIVERY INFORMATION</b></p>
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.order.deliveryname, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.order.deliveryname, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="form-group order-delivery-inf">
+                        <div class="col-1">
+                            <b>Name:</b>  @Html.EditorFor(model => model.order.deliveryname, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.order.deliveryname, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.order.deliveryaddress, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.order.deliveryaddress, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="form-group order-delivery-inf">
+                        <div class="col-1">
+                            <b>Address:</b> @Html.EditorFor(model => model.order.deliveryaddress, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.order.deliveryaddress, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.order.deliveryphone, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.order.deliveryphone, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="form-group order-delivery-inf">
+                        <div class="col-1">
+                            <b>Phone:</b> @Html.EditorFor(model => model.order.deliveryphone, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.order.deliveryphone, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.order.deliveryemail, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-10">
-                            @Html.EditorFor(model => model.order.deliveryemail, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="form-group order-delivery-inf">
+                        <div class="col-1 debug">
+                            <b>Email:</b> @Html.EditorFor(model => model.order.deliveryemail, new { htmlAttributes = new { @class = "form-control" } })
                             @Html.ValidationMessageFor(model => model.order.deliveryemail, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -48,25 +45,36 @@
 
                 <div class="col-1 cart-title">
                     <p><b>DELIVERY TYPE</b></p>
-                    <div class="form-group border-debug">
-                        @Html.LabelFor(model => model.order.deliveryPaymentMethod, htmlAttributes: new { @class = "control-label col-55 border-debug" })
-                        <div class="col-1 border-debug">
-                            COD: @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "COD")
+                    <div class="form-group order-delivery-inf">
+                        <h4><b>Payment Method:</b></h4>
+                        <div class="col-1">
 
-                            BANK: @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "BANK")
 
+                            <div class="row">
+                                <div class="col-2 radio-form">
+                                    <b>COD:</b> @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "COD")
+                                </div>
+                                <div class="col-2 radio-form">
+                                    <b>BANK:</b> @Html.RadioButtonFor(model => model.order.deliveryPaymentMethod, "BANK")
+                                </div>
+                            </div>
                             @Html.ValidationMessageFor(model => model.order.deliveryPaymentMethod, "", new { @class = "text-danger" })
                         </div>
                     </div>
 
-                    <div class="form-group border-debug">
-                        @Html.LabelFor(model => model.order.transport_type, htmlAttributes: new { @class = "control-label col-55 border-debug" })
-                        <div class="col-1 border-debug">
+                    <div class="form-group order-delivery-inf">
+                        <h4><b>Transport Method:</b></h4>
+                        <div class="col-1">
+                            <div class="row">
+                                <div class="col-2 radio-form">
+                                    <b>Coral Civet:</b> @Html.RadioButtonFor(model => model.order.transport_type, "Coral Civet")
 
-                            Coral Civet: @Html.RadioButtonFor(model => model.order.transport_type, "Coral Civet")
+                                </div>
+                                <div class="col-2 radio-form">
+                                    <b>Ninja Lead:</b> @Html.RadioButtonFor(model => model.order.transport_type, "Ninja Lead")
 
-                            Ninja Lead: @Html.RadioButtonFor(model => model.order.transport_type, "Ninja Lead")
-
+                                </div>
+                            </div>
                             @Html.ValidationMessageFor(model => model.order.transport_type, "", new { @class = "text-danger" })
                         </div>
                     </div>
@@ -75,39 +83,50 @@
                 </div>
             </div>
         </div>
-        <div class="col-40 border-debug cart-order">
+
+        <div class="col-40 cart-order">
             <p>ORDER</p>
             <hr />
 
             <div class="row">
                 <div class="order-item">
                     @foreach (var item in Model.orderDetailList)
+
                     {
-                        <div class="col-1">
-                            <p><b>@item.Product.Brand.name @item.Product.name</b></p>
-                            <p>@item.Product.price</p>
-                            <p>Qty: @item.quantity</p>
+                    <div class="col-1 row order-product">
+                        <div class="col-40 border-debug">
+                            <img src="@item.Product.ProductImgs.ElementAt(0).name" style="width: 100%;" />
                         </div>
+
+                        <div class="col-55 ">
+                            <h3 style="margin: 0px;"><b>@item.Product.Brand.name @item.Product.name</b></h3>
+                            <hr style="width:70%;"/>
+                            <p><b>Amount:</b> @item.amount.ToString("N") VND</p>
+                            <p><b>Qty:</b> @item.quantity</p>
+                        </div>
+                    </div>
+
                     }
                 </div>
             </div>
 
             <hr />
-            <p>Order: </p>
-            <p>Discount: </p>
-            <p id="delivery-fee">Delivery fee: 25.000 VND</p>
+            <p><b>Order:</b> @Model.total.ToString("N") VND</p>
+            <p><b>Discount:</b> 0 VND</p>
             <hr />
-            <p>Total: </p>
+            <h3><b>Total:</b> @Model.total.ToString("N") VND</h3>
+
+
             <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <div class="col-1 btn-submit">
+                    <input type="submit" value="SUBMIT" class="col-1 "/>
                 </div>
             </div>
 
         </div>
 
     </div>
-    <script src="~/Scripts/userIndex.js"></script>
+    
 }
 
 
