@@ -23,9 +23,9 @@
                         <a href="@Url.Action("index", "Product")"><b>PRODUCT</b></a>
                         <span class="caret-down"></span>
                         <div class="dropdown-content">
-                            <span class="caret-up @*border-debug*@"></span>
+                            <span class="caret-up"></span>
                             <div class="dropdown-bg">
-                                <div class="row ">
+                                <div class="row">
                                     @{Html.RenderAction("ReturnHeaderCategory", "Home"); }
                                 </div>
                             </div>
@@ -33,27 +33,19 @@
                     </li>
 
                     <li class="dropdown">
-                        <a href="@Url.Action("underConstruction","Home")"><b>BRAND</b></a>
+                        <a href="@Url.Action("Index","Brand")"><b>BRAND</b></a>
                         <span class="caret-down"></span>
                         <div class="dropdown-content">
                             <span class="caret-up @*border-debug*@"></span>
                             <div class="dropdown-bg">
                                 <div class="row ">
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
-                                    <div class="col-3">
-                                        <img src="~/Content/Image/test1.png" alt="category.img" />
-                                    </div>
+                                    @{ Html.RenderAction("GetBrandList", "Brand");}
                                 </div>
                             </div>
                         </div>
                     </li>
 
-                    <li class="dropdown"><a href="@Url.Action("underConstruction","Home")"><b>NEW</b></a></li>
+                    <li class="dropdown"><a href="@Url.Action("NewProduct","Product")"><b>NEW</b></a></li>
                 </ul>
             </nav>
             <div class="find">
@@ -63,13 +55,11 @@
         </div>
     </div>
 
-    <div class="floating-cart">
-        <img src="~/Content/Image/cart.png"/>
-    </div>
+    @{ Html.RenderAction("GetCart", "Cart");}
 
     <div class="body-container body-margin">
         @RenderBody()
-        <hr/>
+        <hr />
     </div>
 
     <div class="footer-container">

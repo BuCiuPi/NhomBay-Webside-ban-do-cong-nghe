@@ -2,10 +2,22 @@
 
 @foreach (var item in Model)
 {
-<div class="col-3 ">
-    <div class="header-dropdown-category">
-        <img src="~/Content/Image/test1.png" alt="category.img" />
-        <a href="">@item.name</a>
-    </div>
+<div class="col-3 index-item category-item">
+    <a href="@Url.Action("Index","Product",new { id = item.Id })">
+        @if (@item.name == "Keyboard")
+        {
+            <img src="~/Content/Image/Category/Keyboard.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+        }
+        else if (@item.name == "Mouse")
+        {
+            <img src="~/Content/Image/Category/Mouse.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+        }
+        else
+        {
+            <img src="~/Content/Image/Category/Other.jpg" class="img-responsive center-block" alt="Keybroad.img" />
+        }
+
+    </a>
+    <h3><b>@item.name</b></h3>
 </div>
 }

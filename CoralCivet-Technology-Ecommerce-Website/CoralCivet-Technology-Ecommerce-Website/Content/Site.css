@@ -1,4 +1,5 @@
 ﻿body {
+    padding-top: 50px;
     background-color: #eaeaea;
 }
 
@@ -167,7 +168,7 @@ textarea {
 
 .dropdown-bg {
     margin: 0;
-    background-color: gray;
+    background-color: #2f2f2f;
     padding: 12px 16px;
     border-radius: 5px;
 }
@@ -378,11 +379,10 @@ ul {
 /* The dots/bullets/indicators */
 .dot {
     cursor: pointer;
-    margin: 0px 2px;
-    height: 10px;
-    width: 30px;
     background-color: #bbb;
     display: inline-block;
+    max-width: 100px;
+    min-width: 50px;
     transition: background-color 0.6s ease;
 }
 
@@ -393,9 +393,37 @@ ul {
 .index-item {
     align-content: center;
 }
+
+.category-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden
+}
+
+    .category-item h3 {
+        width: auto;
+        position: absolute;
+        color: white;
+        text-shadow: 0px 0px 8px #000000;
+        transition-duration: 0.3s;
+    }
+
+    .category-item:hover h3 {
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(0,0,0,1) 51%, rgba(0,0,0,0) 100%);
+    }
+
+    .category-item a img {
+        flex-shrink: 0;
+        min-width: 100%;
+        min-height: 100%;
+       
+    }
+
 .index-category {
     max-width: 1300px;
     text-align: center;
+
 }
     .index-category .row h3 {
         font-size: 30px;
@@ -722,7 +750,6 @@ input:checked + .slider:before {
         text-decoration: none;
         cursor: pointer;
         padding: 10px;
-        border: 1px solid black;
         margin: 10px auto;
     }
 
@@ -759,10 +786,17 @@ input:checked + .slider:before {
     padding: 10px;
     z-index: 10;
     border-radius: 10px 0px 10px 5px;
+    text-align: center;
+    cursor: pointer;
 }
 .floating-cart img{
     width: 20px;
 }
+
+    .floating-cart p{
+        margin: auto;
+        margin-top: 5px;
+    }
 
 .animation-1 {
     transform: translateY(-10px) scale(1.02, 1.02);
@@ -770,6 +804,10 @@ input:checked + .slider:before {
 
 .animation-2 {
     transform: translateY(-5px) scale(1.005, 1.0005);
+}
+
+.background-white {
+    background-color: #f6f6f6;
 }
 /*---------------------------------------------------------------*/
 

@@ -9,7 +9,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet
     [Table("ProductImg")]
     public partial class ProductImg
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        //[DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int Id { get; set; }
 
         [StringLength(50)]

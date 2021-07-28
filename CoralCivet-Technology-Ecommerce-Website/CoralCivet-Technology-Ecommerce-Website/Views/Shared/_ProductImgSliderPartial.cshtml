@@ -1,0 +1,22 @@
+﻿@model IEnumerable<CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet.ProductImg>
+
+
+
+
+<div class="slideshow-container">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <div class="mySlides">
+            <img src="@Model.ElementAt(i).name" style="width:100%" alt="@Model.ElementAt(i).name">
+            <a class="prev" onclick="plusSlides(-1)"></a>
+            <a class="next" onclick="plusSlides(1)"></a>
+        </div>
+    }
+</div>
+
+<div style="text-align:center">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        <img src="@Model.ElementAt(i).name" class="dot" onmouseup="currentSlide(@i + 1)"></img>
+    }
+</div>

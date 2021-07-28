@@ -5,39 +5,36 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CoralCivet_Technology_Ecommerce_Website.Models;
 using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
 using PagedList;
 
 namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class SliderController : Controller
     {
         private CoralCivetContext db = new CoralCivetContext();
         // GET: Admin/Slider
         public ActionResult Index(int? page)
         {
+            ImageGallery image = new ImageGallery();
+            ViewBag.ImageList = image.ImageList;
             ViewBag.Count = db.sliders.Count();
             return View(db.sliders.OrderByDescending(n=>n.updated_at).ToPagedList(page ?? 1, 20));
         }
         
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(slider slider, HttpPostedFileBase imgUpload)
+        public ActionResult Create(slider slider, string ImageList)
         {
-            if (imgUpload == null)
+            if (ImageList == null)
             {
                 ViewBag.NotificationError = "Chọn hình ảnh";
                 return RedirectToAction("Index");
             }
-            else
-            {
-                var fileimg = Path.GetFileName(imgUpload.FileName);
-                //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Banner"), fileimg);
-                imgUpload.SaveAs(pa);
-            }
             slider.orders = 0;
-            slider.img = imgUpload.FileName;
+            slider.img = ImageList;
             slider.updated_at = DateTime.Now;
             slider.created_at = DateTime.Now;
             db.sliders.Add(slider);
@@ -47,15 +44,11 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(slider slider, HttpPostedFileBase imgUpload)
+        public ActionResult Edit(slider slider, string ImageList)
         {
-            if (imgUpload != null)
+            if (ImageList != null)
             {
-                var fileimg = Path.GetFileName(imgUpload.FileName);
-                //Lưu file
-                var pa = Path.Combine(Server.MapPath("~/Images/Banner"), fileimg);
-                imgUpload.SaveAs(pa);
-                slider.img = imgUpload.FileName;
+                slider.img = ImageList;
             }
             slider.updated_at = DateTime.Now;
             db.Entry(slider).State = EntityState.Modified;
