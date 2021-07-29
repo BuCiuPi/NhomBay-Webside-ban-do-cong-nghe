@@ -15,6 +15,7 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
     {
         // GET: Admin/User
         private ApplicationDbContext db = new ApplicationDbContext();
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             return View();

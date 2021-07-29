@@ -1,0 +1,173 @@
+﻿@using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;@using PagedList.Mvc;
+@model PagedList.IPagedList<ProductImg>
+@{
+    ViewBag.Title = "Quản lý ảnh của sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<br />
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-12">
+                <h4>@ViewBag.Title</h4>
+                <ol class="breadcrumb breadcrumb-title breadcrumb-arrow text-dark">
+                    <li class="breadcrumb-item">
+                        <a href="index.html">
+                            <i class="icofont icofont-home"></i>
+                        </a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="basic-table.html">@ViewBag.Title</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-lg-3">
+                <b>Từ khóa</b>
+                <input class="form-control" type="search" value="" id="" placeholder="Mã chủ đề, tên chủ đề, loại chủ đề,...">
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày bắt đầu</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Ngày kết thúc</b>
+                <div class='input-group date' id='datetimepicker1'>
+                    <input type='text' class="form-control" />
+                    <span class="input-group-addon bg-primary">
+                        <span class="icofont icofont-ui-calendar"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <b>Sắp xếp</b>
+                <select class="form-control">
+                    <option value="">Mặc định mới nhất</option>
+                    <option>Cũ nhất</option>
+                    <option>Theo tên</option>
+                </select>
+            </div>
+            <div class="col-lg-12">
+                Hiện tại có <b>@ViewBag.Count</b> ảnh bìa
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-block">
+        <div class="row">
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addImage">
+                    <i class="fas fa-plus-circle">&nbsp;</i> THÊM ẢNH BÌA
+                </button>
+            </div>
+            <br />
+            <br />
+            <div class="col-sm-12 table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>ẢNH BÌA</th>
+                            <th>ĐƯỜNG DẪN</th>
+                            <th>TÙY CHỌN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+                                <td>
+                                    <img src="@item.name" style="width: 200px; height: 100px" />
+                                </td>
+                                <td>@item.name</td>
+                                <td>
+                                    <a data-toggle="modal" data-target="#deleteImage-@item.Id"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups" style="float: right">
+                    @Html.PagedListPager(Model, page => Url.Action("EditProductImages", new { page }))
+                </div>
+            </div>
+            <!--Thêm ảnh-->
+            <div class="modal fade" id="addImage" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1060px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh bìa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="@Url.Action("CreateProductImages","Product")" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <input type="hidden" name="productId" value="@Model.ElementAt(0).productId" />
+                                <div class="form-group">
+                                    @*@Html.DropDownList("ImageList")*@
+                                    <select name="ImageList" id="ImageList" class="form-control">
+                                        @foreach (var image in ViewBag.ImageList)
+                                        {
+                                            <option value="@image.Value">@image.Text</option>
+                                        }
+                                    </select>
+                                    <img alt="image" id="image" style="width:200px;height:200px;" />
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@foreach (var item in Model)
+{
+
+    <!--Xóa ảnh -->
+    <div class="modal fade" id="deleteImage-@item.Id" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Xóa ảnh bìa - @item.name</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Bạn có chắc muốn xóa ảnh bìa này??
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
+                    <button type="button" onclick="window.location.href = '/Admin/Product/DelProductImages?id=@item.Id'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ImageList").change(function () {
+            var imagePath = $("#ImageList").val();
+            $("#image").attr('src', imagePath)
+        });
+        $("#ImageList").trigger('change');
+    });
+</script>
+

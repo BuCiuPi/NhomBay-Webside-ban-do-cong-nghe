@@ -112,5 +112,37 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             TempData["Notification"] = String.Format("Xóa sản phẩm [{0}] thành công.", productID.name);
             return RedirectToAction("Index");
         }
+
+        public ActionResult EditProductImages(int? productid, int? page)
+        {
+            ImageGallery image = new ImageGallery();
+            ViewBag.ImageList = image.ImageList;
+            ViewBag.Count = db.ProductImgs.Where(p => p.productId == productid).Count();
+            return View(db.ProductImgs.Where(p=>p.productId == productid).OrderByDescending(n => n.Id).ToPagedList(page ?? 1, 20));
+        }
+
+        public ActionResult CreateProductImages(ProductImg productImg, string ImageList)
+        {
+            db.ProductImgs.Add(new ProductImg()
+            {
+                name = ImageList,
+                productId = productImg.productId,
+                type = 1,
+            });
+            db.SaveChanges();
+            return RedirectToAction("EditProductImages");
+        }
+
+        public ActionResult DelProductImages(int? id)
+        {
+            var temp = db.ProductImgs.FirstOrDefault(p => p.Id == id);
+            if (true)
+            {
+                db.ProductImgs.Remove(temp);
+                db.SaveChanges();
+            }
+            TempData["Notification"] = String.Format("Xóa Hinh [{0}] thành công.", temp.name);
+            return RedirectToAction("EditProductImages");
+        }
     }
 }
