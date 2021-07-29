@@ -124,7 +124,7 @@
                                     <br />
                                     <br />
                                     <br />
-                                    <a data-toggle="modal" onclick="window.location.href = '/Admin/Product/EditProductImages?productid=@item.ID'"><i class="fa fa-trash">&nbsp;</i>Quản lý ảnh</a>
+                                    <a class="btn btn-info" data-toggle="modal" onclick="window.location.href = '/Admin/Product/EditProductImages?productid=@item.ID'"><i class=" fa fa-trash">&nbsp;</i>Quản lý ảnh</a>
                                 </td>
                             </tr>
                             i++;
@@ -135,6 +135,7 @@
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
                 </div>
             </div>
+
             <!--Thêm sản phẩm-->
             <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" style="max-width: 1060px;">

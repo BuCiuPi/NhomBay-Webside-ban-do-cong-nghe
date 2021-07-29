@@ -63,7 +63,11 @@
 <div class="card">
     <div class="card-block">
         <div class="row">
-
+            <div class="col-lg-6">
+                <button type="button" class="btn btn-success waves-effect waves-light" data-toggle="modal" data-target="#addRole">
+                    <i class="fas fa-plus-circle">&nbsp;</i> THÊM QUYỀN
+                </button>
+            </div>
             <br />
             <br />
             <div class="col-sm-12 table-responsive">
@@ -130,6 +134,39 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="modal fade" id="addRole" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" style="max-width: 1060px;">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Thêm ảnh bìa</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="@Url.Action("CreateRole","User")" method="post" enctype="multipart/form-data">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    <label class="form-control-label">Tên</label>
+                                    <input type="text" class="form-control" name="Name" placeholder="Name" value="0">
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-times-circle">&nbsp;</i> Đóng</button>
+                                    <button type="submit" class="btn btn-primary"><i class="fas fa-save">&nbsp;</i> Lưu</button>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
             @foreach (var item in db.Users.ToList())
             {
                 <!--Sửa người dùng-->

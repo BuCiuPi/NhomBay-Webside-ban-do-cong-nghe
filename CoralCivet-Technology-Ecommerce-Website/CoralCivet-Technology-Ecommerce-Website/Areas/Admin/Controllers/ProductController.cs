@@ -129,11 +129,12 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
                 productId = productImg.productId,
                 type = 1,
             });
+            ;
             db.SaveChanges();
-            return RedirectToAction("EditProductImages");
+            return RedirectToAction("EditProductImages", new { productid = productImg.productId });
         }
 
-        public ActionResult DelProductImages(int? id)
+        public ActionResult DelProductImages(int? id, int? productid)
         {
             var temp = db.ProductImgs.FirstOrDefault(p => p.Id == id);
             if (true)
@@ -141,8 +142,10 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
                 db.ProductImgs.Remove(temp);
                 db.SaveChanges();
             }
+            
+
             TempData["Notification"] = String.Format("Xóa Hinh [{0}] thành công.", temp.name);
-            return RedirectToAction("EditProductImages");
+            return RedirectToAction("EditProductImages", new { productid =  productid });
         }
     }
 }

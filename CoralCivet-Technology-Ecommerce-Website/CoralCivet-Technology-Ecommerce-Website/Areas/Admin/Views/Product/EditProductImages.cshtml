@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Quản lý ảnh của sản phẩm";
     Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    int productid = -1;
 }
 
 <br />
@@ -90,6 +91,7 @@
                                 <td>
                                     <a data-toggle="modal" data-target="#deleteImage-@item.Id"><i class="fa fa-trash">&nbsp;</i>Xóa</a>
                                 </td>
+                                @{productid = item.productId;}
                             </tr>
                         }
                     </tbody>
@@ -112,7 +114,7 @@
                             <form action="@Url.Action("CreateProductImages","Product")" method="post" enctype="multipart/form-data">
                                 @Html.AntiForgeryToken()
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                <input type="hidden" name="productId" value="@Model.ElementAt(0).productId" />
+                                <input type="hidden" name="productId" value="@productid" />
                                 <div class="form-group">
                                     @*@Html.DropDownList("ImageList")*@
                                     <select name="ImageList" id="ImageList" class="form-control">
@@ -155,7 +157,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fas fa-times">&nbsp;</i> Đóng</button>
-                    <button type="button" onclick="window.location.href = '/Admin/Product/DelProductImages?id=@item.Id'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
+                    <button type="button" onclick="window.location.href = '/Admin/Product/DelProductImages?id=@item.Id&productid=@productid'" class="btn btn-danger"><i class="fa fa-trash">&nbsp;</i> Chắc chắn</button>
                 </div>
             </div>
         </div>

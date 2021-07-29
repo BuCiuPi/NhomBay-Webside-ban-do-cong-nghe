@@ -1,6 +1,7 @@
 ﻿using CoralCivet_Technology_Ecommerce_Website.Models;
 using CoralCivet_Technology_Ecommerce_Website.Models.CoralCivet;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -41,6 +42,16 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             TempData["Notification"] = String.Format("Cập nhật User [{0}] thành công.", User.Name);
             return RedirectToAction("Index");
         }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateRole(IdentityRole Role)
+        {
+            db.Roles.Add(Role);
+            db.SaveChanges();
+            TempData["Notification"] = String.Format("Tao Role [{0}] thành công.", Role.Name);
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public ActionResult Delete(String id)
@@ -51,6 +62,18 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
             TempData["Notification"] = String.Format("Xóa User [{0}] thành công.", UserID.Name);
             return RedirectToAction("Index");
         }
-        
+
+        public ActionResult EditUserRole(int? productid, int? page)
+        {
+            ImageGallery image = new ImageGallery();
+            ViewBag.ImageList = image.ImageList;
+/*
+            IdentityUserRole
+
+            db.
+
+            ViewBag.Count = db.ProductImgs.Where(p => p.productId == productid).Count();*/
+            return View(/*db.UsersRole.Where(p => p.productId == productid).OrderByDescending(n => n.Id).ToPagedList(page ?? 1, 20)*/);
+        }
     }
 }
