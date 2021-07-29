@@ -67,12 +67,14 @@ namespace CoralCivet_Technology_Ecommerce_Website.Areas.Admin.Controllers
         {
             ImageGallery image = new ImageGallery();
             ViewBag.ImageList = image.ImageList;
-/*
-            IdentityUserRole
+            ApplicationUser user = new ApplicationUser();
+            /*
 
-            db.
+                        IdentityUserRole
 
-            ViewBag.Count = db.ProductImgs.Where(p => p.productId == productid).Count();*/
+                        db.
+
+                        ViewBag.Count = db.ProductImgs.Where(p => p.productId == productid).Count();*/
             return View(/*db.UsersRole.Where(p => p.productId == productid).OrderByDescending(n => n.Id).ToPagedList(page ?? 1, 20)*/);
         }
     }
